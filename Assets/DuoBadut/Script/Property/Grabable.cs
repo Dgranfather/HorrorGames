@@ -16,19 +16,23 @@ public class Grabable : MonoBehaviour
     {
         grabpoint = grabpointTransform;
         rb.useGravity = false;
+        Physics.IgnoreLayerCollision(6, 8, true);
+        //rb.isKinematic = true;
     }
 
     public void Drop()
     {
         grabpoint = null;
         rb.useGravity = true;
+        Physics.IgnoreLayerCollision(6, 8, false);
+        //rb.isKinematic = false;
     }
 
     private void FixedUpdate()
     {
         if(grabpoint != null)
         {
-            float lerpSpeed = 10f;
+            float lerpSpeed = 15f;
             Vector3 newPos = Vector3.Lerp(transform.position, grabpoint.position, Time.deltaTime * lerpSpeed);
             rb.MovePosition(newPos);
         }

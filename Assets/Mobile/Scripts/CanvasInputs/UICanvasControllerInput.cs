@@ -4,9 +4,15 @@ namespace StarterAssets
 {
     public class UICanvasControllerInput : MonoBehaviour
     {
+        private StaminaPlayer theStaminaPlayer;
 
         [Header("Output")]
         public StarterAssetsInputs starterAssetsInputs;
+
+        private void Start()
+        {
+            theStaminaPlayer = FindObjectOfType<StaminaPlayer>();
+        }
 
         public void VirtualMoveInput(Vector2 virtualMoveDirection)
         {

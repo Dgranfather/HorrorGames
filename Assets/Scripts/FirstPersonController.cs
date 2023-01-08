@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
 #endif
@@ -11,6 +12,10 @@ namespace StarterAssets
 #endif
 	public class FirstPersonController : MonoBehaviour
 	{
+		private StaminaPlayer theStaminaPlayer;
+		private float varSprint;
+		[SerializeField] private GameObject exhaustedNotif;
+
 		[Header("Player")]
 		[Tooltip("Move speed of the character in m/s")]
 		public float MoveSpeed = 4.0f;
@@ -55,7 +60,7 @@ namespace StarterAssets
 		private float _cinemachineTargetPitch;
 
 		// player
-		private float _speed;
+		public float _speed;
 		private float _rotationVelocity;
 		private float _verticalVelocity;
 		private float _terminalVelocity = 53.0f;
@@ -108,6 +113,9 @@ namespace StarterAssets
 			// reset our timeouts on start
 			_jumpTimeoutDelta = JumpTimeout;
 			_fallTimeoutDelta = FallTimeout;
+
+			theStaminaPlayer = FindObjectOfType<StaminaPlayer>();
+			varSprint = SprintSpeed;
 		}
 
 		private void Update()
@@ -180,8 +188,19 @@ namespace StarterAssets
 			}
 			else
 			{
-				_speed = targetSpeed;
-			}
+				if (theStaminaPlayer.currentStamina <= 0)
+				{
+                    SprintSpeed = MoveSpeed;
+					exhaustedNotif.SetActive(true);
+                }
+				else if(theStaminaPlayer.currentStamina >= 30)
+				{
+                    SprintSpeed = varSprint;
+					exhaustedNotif.SetActive(false);
+                }
+
+                _speed = targetSpeed;
+            }
 
 			// normalise input direction
 			Vector3 inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
