@@ -6,6 +6,14 @@ public class DoSomething : MonoBehaviour, IInteractable
 {
     public void interact()
     {
-        Debug.Log("Do Something Success");
+        if (PlayerPrefs.GetInt("IDhandItem") == 1)
+        {
+            Debug.Log("Do Something Success");
+            //Destroy(gameObject);
+        }
+        else
+        {
+            Debug.Log("You need item 1");
+        }
     }
 }

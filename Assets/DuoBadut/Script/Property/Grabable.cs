@@ -6,6 +6,7 @@ public class Grabable : MonoBehaviour
 {
     private Rigidbody rb;
     private Transform grabpoint;
+    public int IDhandItem;
 
     private void Awake()
     {
@@ -17,6 +18,7 @@ public class Grabable : MonoBehaviour
         grabpoint = grabpointTransform;
         rb.useGravity = false;
         Physics.IgnoreLayerCollision(6, 8, true);
+        PlayerPrefs.SetInt("IDhandItem", IDhandItem);
         //rb.isKinematic = true;
     }
 
@@ -25,6 +27,7 @@ public class Grabable : MonoBehaviour
         grabpoint = null;
         rb.useGravity = true;
         Physics.IgnoreLayerCollision(6, 8, false);
+        PlayerPrefs.SetInt("IDhandItem", 0);
         //rb.isKinematic = false;
     }
 

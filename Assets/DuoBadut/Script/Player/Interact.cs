@@ -17,6 +17,12 @@ public class Interact : MonoBehaviour
     private Grabable theGrabable;
     private Interactable theInteractable;
     private IInteractable _iinteractable;
+    private int IDhandItem;
+
+    private void Start()
+    {
+        PlayerPrefs.SetInt("IDhandItem", 0);
+    }
 
     private void Update()
     {
