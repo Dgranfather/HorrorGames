@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 
 public class Interact : MonoBehaviour
 {
@@ -15,29 +17,49 @@ public class Interact : MonoBehaviour
     [SerializeField] private LayerMask InteractObj;
 
     private Grabable theGrabable;
+    private Grabable _grabable;
+
     private Interactable theInteractable;
     private IInteractable _iinteractable;
     private int IDhandItem;
+    private bool isGrabbing = false;
+    private bool isHolding = false;
+
+    private Animator anim;
+    private Rig theRig;
+    private float targetWeight;
+    [SerializeField] private TextMeshProUGUI itemName;
 
     private void Start()
     {
         PlayerPrefs.SetInt("IDhandItem", 0);
+        anim = GetComponentInChildren<Animator>();
+        theRig = GetComponentInChildren<Rig>();
+        targetWeight = 0;
     }
 
     private void Update()
     {
         interactionRay();
+
+        theRig.weight = Mathf.Lerp(theRig.weight, targetWeight, Time.deltaTime * 10f);
     }
 
     void interactionRay()
     {
-        if (Physics.Raycast(playerCamTransform.position, playerCamTransform.forward, rayDistance, GrabableObj))
+        if (Physics.Raycast(playerCamTransform.position, playerCamTransform.forward, out RaycastHit rayHit, rayDistance, GrabableObj))
         {
             grabSign.SetActive(true);
+            if (rayHit.transform.TryGetComponent(out _grabable))
+            {
+                itemName.enabled = true;
+                itemName.text = _grabable.nameItem;
+            }
         }
         else
         {
             grabSign.SetActive(false);
+            itemName.enabled = false;
         }
 
         if (Physics.Raycast(playerCamTransform.position, playerCamTransform.forward, rayDistance, InteractObj))
@@ -60,15 +82,25 @@ public class Interact : MonoBehaviour
             {
                 if (rayHit.transform.TryGetComponent(out theGrabable))
                 {
-                    theGrabable.Grab(grabpointTransform);
+                    if (isHolding == false)
+                    {
+                        isHolding = true;
+                        theGrabable.Grab(grabpointTransform);
+                        //targetWeight = 1f;
+                        StartCoroutine(Pickingup());
+                    }
                 }
             }
         }
-        else
+        else if(isHolding == true && isGrabbing == false)
         {
             theGrabable.Drop();
             theGrabable = null;
+            targetWeight = 0;
+            isHolding = false;
         }
+
+        
     }
 
     public void DoInteraction()
@@ -81,5 +113,14 @@ public class Interact : MonoBehaviour
             }
         }
     }
+
+    IEnumerator Pickingup()
+    {
+        isGrabbing = true;
+        anim.Play("pickup");
+        yield return new WaitForSeconds(1.2f);
+        targetWeight = 1f;
+        isGrabbing = false;
+    }    
 
 }

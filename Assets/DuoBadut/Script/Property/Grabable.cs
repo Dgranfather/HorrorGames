@@ -7,6 +7,7 @@ public class Grabable : MonoBehaviour
     private Rigidbody rb;
     private Transform grabpoint;
     public int IDhandItem;
+    public string nameItem;
 
     private void Awake()
     {
@@ -15,30 +16,36 @@ public class Grabable : MonoBehaviour
 
     public void Grab(Transform grabpointTransform)
     {
-        grabpoint = grabpointTransform;
         rb.useGravity = false;
-        Physics.IgnoreLayerCollision(6, 8, true);
-        PlayerPrefs.SetInt("IDhandItem", IDhandItem);
-        //rb.isKinematic = true;
+        rb.detectCollisions = false;
+        PlayerPrefs.SetInt("IDhandItem", IDhandItem); 
+        StartCoroutine(moveitemPos(grabpointTransform));
     }
 
     public void Drop()
     {
         grabpoint = null;
         rb.useGravity = true;
-        Physics.IgnoreLayerCollision(6, 8, false);
+        rb.detectCollisions = true;
         PlayerPrefs.SetInt("IDhandItem", 0);
-        //rb.isKinematic = false;
+        transform.SetParent(null);
     }
 
-    private void FixedUpdate()
+    //private void FixedUpdate()
+    //{
+    //    if (grabpoint != null)
+    //    {
+    //        float lerpSpeed = 10f;
+    //        Vector3 newPos = Vector3.Lerp(transform.position, grabpoint.position, Time.deltaTime * lerpSpeed);
+    //        rb.MovePosition(grabpoint.position);
+    //    }
+    //}
+
+    IEnumerator moveitemPos(Transform grabpointTransform)
     {
-        if(grabpoint != null)
-        {
-            float lerpSpeed = 15f;
-            Vector3 newPos = Vector3.Lerp(transform.position, grabpoint.position, Time.deltaTime * lerpSpeed);
-            rb.MovePosition(newPos);
-        }
+        yield return new WaitForSeconds(0.6f);
+        transform.SetParent(grabpointTransform);
+        transform.localPosition = new Vector3(0f, 0f, 0f);
+        grabpoint = grabpointTransform;
     }
-
 }

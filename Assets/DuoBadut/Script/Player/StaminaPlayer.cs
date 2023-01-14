@@ -30,12 +30,20 @@ public class StaminaPlayer : MonoBehaviour
         {
             DecreaseEnergy();
         }
+        else if(currentStamina >= 0 && theFPC._speed > 0)
+        {
+            if (currentStamina <= maxStamina)
+            {
+                IncreaseEnergy();
+            }
+        }
         else
         {
-            if(currentStamina <= maxStamina)
-            IncreaseEnergy();
+            if (currentStamina <= maxStamina)
+            {
+                DoubleIncreaseEnergy();
+            }
         }
-
         staminaBar.value = currentStamina;
     }
 
@@ -50,5 +58,10 @@ public class StaminaPlayer : MonoBehaviour
     public void IncreaseEnergy()
     {
         currentStamina += iValue * Time.deltaTime;
+    }
+
+    private void DoubleIncreaseEnergy()
+    {
+        currentStamina += iValue * 2 * Time.deltaTime;
     }
 }

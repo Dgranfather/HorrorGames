@@ -15,6 +15,7 @@ namespace StarterAssets
 		private StaminaPlayer theStaminaPlayer;
 		private float varSprint;
 		[SerializeField] private GameObject exhaustedNotif;
+		private Animator anim;
 
 		[Header("Player")]
 		[Tooltip("Move speed of the character in m/s")]
@@ -116,6 +117,8 @@ namespace StarterAssets
 
 			theStaminaPlayer = FindObjectOfType<StaminaPlayer>();
 			varSprint = SprintSpeed;
+
+			anim = GetComponentInChildren<Animator>();
 		}
 
 		private void Update()
@@ -123,7 +126,8 @@ namespace StarterAssets
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
-		}
+            anim.SetFloat("Speed", Mathf.Abs(_speed));
+        }
 
 		private void LateUpdate()
 		{
