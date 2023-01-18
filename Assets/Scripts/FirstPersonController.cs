@@ -16,6 +16,8 @@ namespace StarterAssets
 		private float varSprint;
 		[SerializeField] private GameObject exhaustedNotif;
 		private Animator anim;
+		[SerializeField] private AudioSource walkingSfx, exhaustedSfx;
+		private bool exhausted = false;
 
 		[Header("Player")]
 		[Tooltip("Move speed of the character in m/s")]
@@ -127,6 +129,33 @@ namespace StarterAssets
 			GroundedCheck();
 			Move();
             anim.SetFloat("Speed", Mathf.Abs(_speed));
+
+			//sfx footsteps walking & runing
+			if(_speed > 0 && _speed <= MoveSpeed && Grounded)
+			{
+				walkingSfx.pitch = 0.78f;
+				walkingSfx.enabled = true;
+			}
+			else if(_speed > 0 && _speed > MoveSpeed && Grounded)
+			{
+				walkingSfx.pitch = 1.25f;
+				walkingSfx.enabled = true;
+			}
+			else
+			{
+				walkingSfx.enabled = false;
+			}
+
+			//sfx exhausted
+			if(exhausted)
+			{
+				exhaustedSfx.enabled = true;
+			}
+			else
+			{
+				exhaustedSfx.enabled = false;
+
+            }
         }
 
 		private void LateUpdate()
@@ -196,11 +225,13 @@ namespace StarterAssets
 				{
                     SprintSpeed = MoveSpeed;
 					exhaustedNotif.SetActive(true);
+					exhausted = true;
                 }
 				else if(theStaminaPlayer.currentStamina >= 30)
 				{
                     SprintSpeed = varSprint;
 					exhaustedNotif.SetActive(false);
+					exhausted = false;
                 }
 
                 _speed = targetSpeed;
