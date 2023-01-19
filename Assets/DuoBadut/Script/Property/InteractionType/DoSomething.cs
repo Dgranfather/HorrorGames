@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class DoSomething : MonoBehaviour, IInteractable
 {
+    public Interact theInteract;
     public void interact()
     {
-        if (PlayerPrefs.GetInt("IDhandItem") == 1)
+        if (theInteract.itemID == 1)
         {
             Debug.Log("Do Something Success");
             //Destroy(gameObject);
