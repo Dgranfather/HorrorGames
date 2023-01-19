@@ -30,7 +30,7 @@ public class CraftingTable : MonoBehaviour, IInteractable
                 if(other.TryGetComponent(out theGrabable))
                 {
                     theGrabable.transform.position = itemPos1.position;
-                    idItem1 = theGrabable.IDhandItem;
+                    idItem1 = theGrabable.itemID;
                 }
             }
             else if(theGrabable != null && _grabable == null)
@@ -38,7 +38,7 @@ public class CraftingTable : MonoBehaviour, IInteractable
                 if (other.TryGetComponent(out _grabable))
                 {
                     _grabable.transform.position = itemPos2.position;
-                    idItem2 = _grabable.IDhandItem;
+                    idItem2 = _grabable.itemID;
                 }
             }
         }
@@ -55,6 +55,8 @@ public class CraftingTable : MonoBehaviour, IInteractable
             theGrabable = null;
             idItem2 = 0;
             _grabable = null;
+            
+            //just this one that need to change if any other item added for crafting
             Instantiate(craftingOutput[0], outputPos.position, outputPos.rotation);
         }
         else

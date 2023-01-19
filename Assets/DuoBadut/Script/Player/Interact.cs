@@ -15,13 +15,12 @@ public class Interact : MonoBehaviour
     [SerializeField] private GameObject grabSign;
     [SerializeField] private GameObject interactBtn;
     [SerializeField] private LayerMask InteractObj;
+    public int itemID;
 
-    private Grabable theGrabable;
+    public Grabable theGrabable;
     private Grabable _grabable;
 
-    private Interactable theInteractable;
     private IInteractable _iinteractable;
-    private int IDhandItem;
     private bool isGrabbing = false;
     private bool isHolding = false;
 
@@ -84,9 +83,9 @@ public class Interact : MonoBehaviour
                 {
                     if (isHolding == false)
                     {
+                        itemID = theGrabable.itemID;
                         isHolding = true;
                         theGrabable.Grab(grabpointTransform);
-                        //targetWeight = 1f;
                         StartCoroutine(Pickingup());
                     }
                 }
@@ -97,10 +96,9 @@ public class Interact : MonoBehaviour
             theGrabable.Drop();
             theGrabable = null;
             targetWeight = 0;
-            isHolding = false;
+            itemID = 0;
+            isHolding = false;  
         }
-
-        
     }
 
     public void DoInteraction()
@@ -123,4 +121,11 @@ public class Interact : MonoBehaviour
         isGrabbing = false;
     }    
 
+    public void setHandNull()
+    {
+        theGrabable = null;
+        targetWeight = 0;
+        itemID = 0;
+        isHolding = false;
+    }
 }

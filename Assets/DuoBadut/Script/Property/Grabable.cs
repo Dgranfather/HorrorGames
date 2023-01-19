@@ -6,7 +6,7 @@ public class Grabable : MonoBehaviour
 {
     private Rigidbody rb;
     private Transform grabpoint;
-    public int IDhandItem;
+    public int itemID;
     public string nameItem;
 
     private void Awake()
@@ -18,7 +18,6 @@ public class Grabable : MonoBehaviour
     {
         rb.useGravity = false;
         rb.detectCollisions = false;
-        PlayerPrefs.SetInt("IDhandItem", IDhandItem); 
         StartCoroutine(moveitemPos(grabpointTransform));
     }
 
@@ -27,7 +26,6 @@ public class Grabable : MonoBehaviour
         grabpoint = null;
         rb.useGravity = true;
         rb.detectCollisions = true;
-        PlayerPrefs.SetInt("IDhandItem", 0);
         transform.SetParent(null);
     }
 
