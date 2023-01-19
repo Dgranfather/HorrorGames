@@ -44,8 +44,10 @@ public class LockedDoor : MonoBehaviour, IInteractable
                 isLocked = false;
                 unlockSfx.Play();
                 doorHandle.Rotate(0, 0, 90);
-                Destroy(theInteract.theGrabable.gameObject);
-                theInteract.setHandNull();
+
+                //if want to destroy the required item
+                //Destroy(theInteract.theGrabable.gameObject);
+                //theInteract.setHandNull();
             }
             else
             {
