@@ -1,18 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class OpenClose : MonoBehaviour, IInteractable
 {
-    private Animator openandclose1;
+    private Animator openandclose;
     private bool open;
-    public AudioSource dooropenSfx;
-    public AudioSource doorcloseSfx;
+
+    private SoundsManager soundsManager;
+
     void Start()
     {
         open = false;
-        openandclose1 = GetComponent<Animator>();
+        openandclose = GetComponent<Animator>();
+        soundsManager = FindObjectOfType<SoundsManager>();
     }
 
     public void interact()
@@ -33,8 +34,8 @@ public class OpenClose : MonoBehaviour, IInteractable
     IEnumerator opening()
     {
         //print("you are opening the door");
-        openandclose1.Play("Opening 1");
-        dooropenSfx.Play();
+        openandclose.Play("Opening");
+        soundsManager.PlaySfx(0);
         open = true;
         yield return new WaitForSeconds(.5f);
     }
@@ -42,8 +43,8 @@ public class OpenClose : MonoBehaviour, IInteractable
     IEnumerator closing()
     {
         //print("you are closing the door");
-        openandclose1.Play("Closing 1");
-        doorcloseSfx.Play();
+        openandclose.Play("Closing");
+        soundsManager.PlaySfx(1);
         open = false;
         yield return new WaitForSeconds(.5f);
     }

@@ -415,12 +415,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d897551fb2eb4e0418f4f9bef5eb31e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredItemID: 3
+  requiredItemID: 4
   theInteract: {fileID: 0}
   doorHandle: {fileID: 2083101640258397129}
-  unlockSfx: {fileID: 6179316830872127007}
-  dooropenSfx: {fileID: 6179316830872127005}
-  doorcloseSfx: {fileID: 6179316830872127004}
 --- !u!82 &6179316830872127007
 AudioSource:
   m_ObjectHideFlags: 0

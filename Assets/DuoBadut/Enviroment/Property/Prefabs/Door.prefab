@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 716808188072717444}
   - component: {fileID: 1002709095482175776}
   - component: {fileID: 7533306188917906745}
-  - component: {fileID: 6436038859650806663}
   - component: {fileID: 259310853}
   - component: {fileID: 259310854}
+  - component: {fileID: 242989373}
   m_Layer: 7
   m_Name: Int_Door_01
   m_TagString: Untagged
@@ -123,20 +123,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &6436038859650806663
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 975717562372913876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1345b01a84d1a54b815d6e7e4434503, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dooropenSfx: {fileID: 259310854}
-  doorcloseSfx: {fileID: 259310853}
 --- !u!82 &259310853
 AudioSource:
   m_ObjectHideFlags: 0
@@ -329,6 +315,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &242989373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975717562372913876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1345b01a84d1a54b815d6e7e4434503, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dooropenSfx: {fileID: 259310854}
+  doorcloseSfx: {fileID: 259310853}
 --- !u!1 &3557138658983743805
 GameObject:
   m_ObjectHideFlags: 0

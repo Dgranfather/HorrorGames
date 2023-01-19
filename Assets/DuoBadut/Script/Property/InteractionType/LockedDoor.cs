@@ -11,14 +11,14 @@ public class LockedDoor : MonoBehaviour, IInteractable
     public Interact theInteract;
     private bool isLocked = true;
     [SerializeField] Transform doorHandle;
-    public AudioSource unlockSfx;
-    public AudioSource dooropenSfx;
-    public AudioSource doorcloseSfx;
+
+    private SoundsManager soundsManager;
 
     void Start()
     {
         open = false;
         openandclose1 = GetComponent<Animator>();
+        soundsManager = FindObjectOfType<SoundsManager>();
     }
 
     public void interact()
@@ -42,7 +42,7 @@ public class LockedDoor : MonoBehaviour, IInteractable
             if (theInteract.itemID == requiredItemID)
             {
                 isLocked = false;
-                unlockSfx.Play();
+                soundsManager.PlaySfx(2);
                 doorHandle.Rotate(0, 0, 90);
 
                 //if want to destroy the required item
@@ -62,7 +62,7 @@ public class LockedDoor : MonoBehaviour, IInteractable
     {
         //print("you are opening the door");
         openandclose1.Play("Opening 1");
-        dooropenSfx.Play();
+        soundsManager.PlaySfx(0);
         open = true;
         yield return new WaitForSeconds(.5f);
     }
@@ -71,7 +71,7 @@ public class LockedDoor : MonoBehaviour, IInteractable
     {
         //print("you are closing the door");
         openandclose1.Play("Closing 1");
-        doorcloseSfx.Play();
+        soundsManager.PlaySfx(1);
         open = false;
         yield return new WaitForSeconds(.5f);
     }
