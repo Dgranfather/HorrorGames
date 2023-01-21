@@ -16,17 +16,17 @@ public class Grabable : MonoBehaviour
 
     public void Grab(Transform grabpointTransform)
     {
+        StartCoroutine(moveitemPos(grabpointTransform));
         rb.useGravity = false;
         rb.detectCollisions = false;
-        StartCoroutine(moveitemPos(grabpointTransform));
     }
 
     public void Drop()
     {
-        grabpoint = null;
-        rb.useGravity = true;
         rb.detectCollisions = true;
         transform.SetParent(null);
+        grabpoint = null;
+        rb.useGravity = true;
     }
 
     //private void FixedUpdate()
@@ -44,6 +44,7 @@ public class Grabable : MonoBehaviour
         yield return new WaitForSeconds(0.6f);
         transform.SetParent(grabpointTransform);
         transform.localPosition = new Vector3(0f, 0f, 0f);
+        transform.localRotation = Quaternion.identity;
         grabpoint = grabpointTransform;
     }
 }
