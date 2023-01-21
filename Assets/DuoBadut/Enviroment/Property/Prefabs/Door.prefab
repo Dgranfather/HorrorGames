@@ -30,8 +30,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 975717562372913876}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.7400007, y: 0.10000356, z: 1.1667494}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.7400013, y: 0.10000356, z: 1.1920004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -327,8 +327,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1345b01a84d1a54b815d6e7e4434503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dooropenSfx: {fileID: 259310854}
-  doorcloseSfx: {fileID: 259310853}
 --- !u!1 &3557138658983743805
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,7 +355,7 @@ Transform:
   m_GameObject: {fileID: 3557138658983743805}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5010806, y: 1.4897978, z: 1.6917281}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2320540182872324821}
@@ -528,7 +526,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4493342268060537099
 Transform:
   m_ObjectHideFlags: 0

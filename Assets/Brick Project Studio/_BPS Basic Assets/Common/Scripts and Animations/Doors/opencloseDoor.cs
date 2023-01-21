@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace SojaExiles
 
@@ -17,7 +18,7 @@ namespace SojaExiles
 			open = false;
 		}
 
-		void OnMouseOver()
+		void OnMouseOver(InputAction.CallbackContext context)
 		{
 			{
 				if (Player)
