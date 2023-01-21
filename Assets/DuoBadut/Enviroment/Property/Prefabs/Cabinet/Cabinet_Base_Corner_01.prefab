@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 840945293301316383}
   - component: {fileID: 6728388656513441460}
   - component: {fileID: 6515298437480890471}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pull.021
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,8 +198,8 @@ GameObject:
   - component: {fileID: 724647460319983156}
   - component: {fileID: 4739048967484767740}
   - component: {fileID: 4739048967484767741}
-  - component: {fileID: 4739048967484767742}
-  m_Layer: 0
+  - component: {fileID: 7739981833916006227}
+  m_Layer: 7
   m_Name: Door_L.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -306,7 +306,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &4739048967484767742
+--- !u!114 &7739981833916006227
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -315,12 +315,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4269152884934736037}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e8192f35a44301488ec0f072d9a16fe, type: 3}
+  m_Script: {fileID: 11500000, guid: 7110f8c41dfef7847904cd6362bcc0ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openandclose: {fileID: 4739048967484767741}
-  open: 0
-  Player: {fileID: 0}
 --- !u!1 &7128354758711965523
 GameObject:
   m_ObjectHideFlags: 0
