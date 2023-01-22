@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Grabable : MonoBehaviour
 {
+    private bool onGrab = false;
     private Rigidbody rb;
     private Transform grabpoint;
     public int itemID;
     public string nameItem;
+    [SerializeField] private GameObject blinkingEff;
 
     private void Awake()
     {
@@ -17,6 +19,7 @@ public class Grabable : MonoBehaviour
     public void Grab(Transform grabpointTransform)
     {
         StartCoroutine(moveitemPos(grabpointTransform));
+        onGrab = true;
         rb.useGravity = false;
         rb.detectCollisions = false;
     }
@@ -27,8 +30,20 @@ public class Grabable : MonoBehaviour
         transform.SetParent(null);
         grabpoint = null;
         rb.useGravity = true;
+        onGrab = false;
     }
 
+    private void Update()
+    {
+        if(onGrab == false)
+        {
+            blinkingEff.SetActive(true);
+        }
+        else
+        {
+            blinkingEff.SetActive(false);
+        }
+    }
     //private void FixedUpdate()
     //{
     //    if (grabpoint != null)
