@@ -62,4 +62,12 @@ public class Grabable : MonoBehaviour
         transform.localRotation = Quaternion.identity;
         grabpoint = grabpointTransform;
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "DrawerGround")
+        {
+            transform.SetParent(collision.gameObject.transform);
+        }
+    }
 }
