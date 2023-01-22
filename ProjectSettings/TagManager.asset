@@ -8,6 +8,7 @@ TagManager:
   - GrabableObj
   - CraftPos
   - Enemy
+  - DrawerGround
   layers:
   - Default
   - TransparentFX
