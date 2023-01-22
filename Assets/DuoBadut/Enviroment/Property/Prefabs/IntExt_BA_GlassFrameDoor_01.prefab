@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1209407868266248702}
   m_Layer: 7
   m_Name: GlassDoor.001
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -317,7 +317,7 @@ GameObject:
   - component: {fileID: 1209330997083860268}
   m_Layer: 7
   m_Name: GlassDoor
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

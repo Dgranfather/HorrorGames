@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 5463525056283016593}
   m_Layer: 7
   m_Name: Top
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -407,7 +407,7 @@ GameObject:
   - component: {fileID: 9001350528895060207}
   m_Layer: 7
   m_Name: Bottom
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

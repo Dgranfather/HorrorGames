@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8934953605700841647}
   m_Layer: 7
   m_Name: Door_L.016
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -328,7 +328,7 @@ GameObject:
   - component: {fileID: 5719931694892751709}
   m_Layer: 7
   m_Name: Door_L.014
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -810,7 +810,7 @@ GameObject:
   - component: {fileID: 8113844518131258873}
   m_Layer: 7
   m_Name: Drawer_Script
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -24,7 +24,7 @@ public class PowerBoxPanel : MonoBehaviour, IInteractable
         if (theInteract.itemID == requiredItemID)
         {
             powerPanel.SetActive(true);
-            gameObject.layer = 0;
+            gameObject.tag = "Untagged";
         }
     }
 }

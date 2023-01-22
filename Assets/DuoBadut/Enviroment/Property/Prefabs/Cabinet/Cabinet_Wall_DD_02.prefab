@@ -199,7 +199,7 @@ GameObject:
   - component: {fileID: 46658241650403489}
   m_Layer: 7
   m_Name: Door_R.004
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -331,7 +331,7 @@ GameObject:
   - component: {fileID: 46658241031342119}
   m_Layer: 7
   m_Name: Door_L.004
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

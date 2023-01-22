@@ -9,12 +9,12 @@ public class Interact : MonoBehaviour
     
     [SerializeField] private Transform playerCamTransform;
     [SerializeField] private Transform grabpointTransform;
-    [SerializeField] private LayerMask GrabableObj;
+    [SerializeField] private LayerMask everythingLayer;
     [SerializeField] private float rayDistance;
     [SerializeField] private GameObject interactSign;
     [SerializeField] private GameObject grabSign;
     [SerializeField] private GameObject interactBtn;
-    [SerializeField] private LayerMask InteractObj;
+    //[SerializeField] private LayerMask InteractObj;
     public int itemID;
 
     public Grabable theGrabable;
@@ -37,7 +37,7 @@ public class Interact : MonoBehaviour
         targetWeight = 0;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         interactionRay();
 
@@ -46,28 +46,38 @@ public class Interact : MonoBehaviour
 
     void interactionRay()
     {
-        if (Physics.Raycast(playerCamTransform.position, playerCamTransform.forward, out RaycastHit rayHit, rayDistance, GrabableObj))
+        if (Physics.Raycast(playerCamTransform.position, playerCamTransform.forward, out RaycastHit rayHit, rayDistance, everythingLayer))
         {
-            grabSign.SetActive(true);
-            if (rayHit.transform.TryGetComponent(out _grabable))
+            if (rayHit.collider.gameObject.tag == "Grabable")
             {
-                itemName.enabled = true;
-                itemName.text = _grabable.nameItem;
+                grabSign.SetActive(true);
+                if (rayHit.transform.TryGetComponent(out _grabable))
+                {
+                    itemName.enabled = true;
+                    itemName.text = _grabable.nameItem;
+                }
+            }
+            else
+            {
+                grabSign.SetActive(false);
+                itemName.enabled = false;
+            }
+
+            if (rayHit.collider.gameObject.tag == "Interactable")
+            {
+                interactSign.SetActive(true);
+                interactBtn.SetActive(true);
+            }
+            else
+            {
+                interactSign.SetActive(false);
+                interactBtn.SetActive(false);
             }
         }
         else
         {
             grabSign.SetActive(false);
             itemName.enabled = false;
-        }
-
-        if (Physics.Raycast(playerCamTransform.position, playerCamTransform.forward, rayDistance, InteractObj))
-        {
-            interactSign.SetActive(true);
-            interactBtn.SetActive(true);
-        }
-        else
-        {
             interactSign.SetActive(false);
             interactBtn.SetActive(false);
         }
@@ -77,21 +87,20 @@ public class Interact : MonoBehaviour
     {
         if (theGrabable == null)
         {
-            if (Physics.Raycast(playerCamTransform.position, playerCamTransform.forward, out RaycastHit rayHit, rayDistance, GrabableObj))
+            if (Physics.Raycast(playerCamTransform.position, playerCamTransform.forward, out RaycastHit rayHit, rayDistance, everythingLayer))
             {
-                if (rayHit.transform.TryGetComponent(out theGrabable))
+                if (rayHit.collider.gameObject.tag == "Grabable")
                 {
-                    if (isHolding == false)
+                    if (rayHit.transform.TryGetComponent(out theGrabable))
                     {
-                        itemID = theGrabable.itemID;
-                        isHolding = true;
-                        theGrabable.Grab(grabpointTransform);
-                        StartCoroutine(Pickingup());
+                        if (isHolding == false)
+                        {
+                            itemID = theGrabable.itemID;
+                            isHolding = true;
+                            theGrabable.Grab(grabpointTransform);
+                            StartCoroutine(Pickingup());
+                        }
                     }
-                }
-                else
-                {
-                    print("something blocking");
                 }
             }
         }
@@ -107,11 +116,14 @@ public class Interact : MonoBehaviour
 
     public void DoInteraction()
     {
-        if (Physics.Raycast(playerCamTransform.position, playerCamTransform.forward, out RaycastHit rayHit, rayDistance, InteractObj))
+        if (Physics.Raycast(playerCamTransform.position, playerCamTransform.forward, out RaycastHit rayHit, rayDistance, everythingLayer))
         {
-            if (rayHit.transform.TryGetComponent(out _iinteractable))
+            if (rayHit.collider.gameObject.tag == "Interactable")
             {
-                _iinteractable.interact();
+                if (rayHit.transform.TryGetComponent(out _iinteractable))
+                {
+                    _iinteractable.interact();
+                }
             }
         }
     }
