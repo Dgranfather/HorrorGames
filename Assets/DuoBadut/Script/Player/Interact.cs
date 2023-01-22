@@ -89,6 +89,10 @@ public class Interact : MonoBehaviour
                         StartCoroutine(Pickingup());
                     }
                 }
+                else
+                {
+                    print("something blocking");
+                }
             }
         }
         else if(isHolding == true && isGrabbing == false)

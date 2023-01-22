@@ -96,7 +96,6 @@ GameObject:
   - component: {fileID: 7740164085595709781}
   - component: {fileID: 674042398674115185}
   - component: {fileID: 674042398674115190}
-  - component: {fileID: 674042398674115191}
   - component: {fileID: 2967386418548883608}
   m_Layer: 7
   m_Name: Door.L
@@ -204,21 +203,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &674042398674115191
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 674042398674115188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e8192f35a44301488ec0f072d9a16fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  openandclose: {fileID: 674042398674115190}
-  open: 0
-  Player: {fileID: 0}
 --- !u!114 &2967386418548883608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,7 +312,6 @@ GameObject:
   - component: {fileID: 566577959064098134}
   - component: {fileID: 1120681964611022691}
   - component: {fileID: 1120681964611022688}
-  - component: {fileID: 1120681964611022689}
   - component: {fileID: 4577981094019753027}
   m_Layer: 7
   m_Name: Door.R
@@ -436,21 +419,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &1120681964611022689
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1120681964611022694}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b5e0617227fa4743be84f23d9e5cb42, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  openandclose1: {fileID: 1120681964611022688}
-  open: 0
-  Player: {fileID: 0}
 --- !u!114 &4577981094019753027
 MonoBehaviour:
   m_ObjectHideFlags: 0

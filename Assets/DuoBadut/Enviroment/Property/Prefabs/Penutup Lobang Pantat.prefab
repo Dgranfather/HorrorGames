@@ -2260,7 +2260,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2773
+  m_VersionIndex: 2782
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -2372,4 +2372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   theInteract: {fileID: 0}
-  requiredItemID: 4
+  requiredItemID: 0
+  maxValue: 3
+  progressBar: {fileID: 0}
+  interactionName: Digging . . .
