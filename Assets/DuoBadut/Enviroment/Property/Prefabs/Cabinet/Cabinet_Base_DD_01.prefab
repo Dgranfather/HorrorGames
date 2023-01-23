@@ -723,9 +723,10 @@ GameObject:
   - component: {fileID: 6925266406496388757}
   - component: {fileID: 7366822296182126574}
   - component: {fileID: 604280440854987523}
+  - component: {fileID: 61531351}
   m_Layer: 7
   m_Name: Drawer.004
-  m_TagString: Untagged
+  m_TagString: DrawerGround
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -796,6 +797,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &61531351
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7029717379909708604}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.85970294, y: 0.016594132, z: 1.1265972}
+  m_Center: {x: -0.4059918, y: -0.10057062, z: 0}
 --- !u!1 &8604903171377623401
 GameObject:
   m_ObjectHideFlags: 0
