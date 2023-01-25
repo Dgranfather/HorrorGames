@@ -44,4 +44,14 @@ public class FlashlightIntensity : MonoBehaviour
         }
     }
 
+    public void Charging()
+    {
+        if (currentBatery < maxBatery)
+        {
+            currentBatery += iValue * Time.deltaTime;
+            baterySlider.value = currentBatery;
+        }
+
+    }
+
 }
