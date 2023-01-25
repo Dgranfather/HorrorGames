@@ -14,11 +14,13 @@ public class ChargingFlashlight : MonoBehaviour, IInteractable
     [SerializeField] private string interactionName;
     [SerializeField] private SetInteractionName theSetInteractionName;
     [SerializeField] private GameObject interactionNameUI;
+    private SoundsManager soundsManager;
     // Start is called before the first frame update
     void Start()
     {
         theInteract = FindObjectOfType<Interact>();
         theFpsController = FindObjectOfType<FirstPersonController>();
+        soundsManager = FindObjectOfType<SoundsManager>();
     }
 
     // Update is called once per frame
@@ -40,11 +42,15 @@ public class ChargingFlashlight : MonoBehaviour, IInteractable
 
     public void interact()
     {
-        if (theInteract.itemID == requiredItemID)
+        if (onInteraction == false)
         {
-            onInteraction = true;
-            interactionNameUI.SetActive(true);
-            theSetInteractionName.SetName(interactionName);
+            if (theInteract.itemID == requiredItemID)
+            {
+                onInteraction = true;
+                interactionNameUI.SetActive(true);
+                theSetInteractionName.SetName(interactionName);
+                soundsManager.PlaySfx(4);
+            }
         }
     }
 }

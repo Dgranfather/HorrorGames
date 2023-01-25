@@ -50,6 +50,7 @@ public class FlashlightIntensity : MonoBehaviour
         {
             currentBatery += iValue * Time.deltaTime;
             baterySlider.value = currentBatery;
+            fill.color = gradient.Evaluate(baterySlider.normalizedValue);
         }
 
     }
