@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PowerBoxDoor : MonoBehaviour, IInteractable
@@ -8,6 +9,8 @@ public class PowerBoxDoor : MonoBehaviour, IInteractable
     [SerializeField] private int requiredItemID;
     private SoundsManager soundsManager;
 
+    [SerializeField] private GameObject requiredNotif;
+    [SerializeField] private TextMeshProUGUI requiredNotifTxt;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +25,7 @@ public class PowerBoxDoor : MonoBehaviour, IInteractable
         }
         else
         {
-            Debug.Log("You need this item : " + requiredItemID);
+            StartCoroutine(NeedItemNotif());
         }
     }
 
@@ -31,5 +34,13 @@ public class PowerBoxDoor : MonoBehaviour, IInteractable
         soundsManager.PlaySfx(2);
         yield return new WaitForSeconds(.5f);
         gameObject.SetActive(false);
+    }
+
+    IEnumerator NeedItemNotif()
+    {
+        requiredNotifTxt.text = "You need <color=yellow>Power Box Key</color> to interact";
+        requiredNotif.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        requiredNotif.SetActive(false);
     }
 }

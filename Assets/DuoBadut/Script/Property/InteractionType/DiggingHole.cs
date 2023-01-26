@@ -1,6 +1,7 @@
 using StarterAssets;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +17,9 @@ public class DiggingHole : MonoBehaviour, IInteractable
     public GameObject progressBar;
     private FirstPersonController theFpsController;
     [SerializeField] private string interactionName;
+
+    [SerializeField] private GameObject requiredNotif;
+    [SerializeField] private TextMeshProUGUI requiredNotifTxt;
 
     // Start is called before the first frame update
     void Start()
@@ -74,7 +78,15 @@ public class DiggingHole : MonoBehaviour, IInteractable
         }
         else
         {
-            Debug.Log("You need this item : " + requiredItemID);
+            StartCoroutine(NeedItemNotif());
         }
+    }
+
+    IEnumerator NeedItemNotif()
+    {
+        requiredNotifTxt.text = "You need <color=yellow>Spade</color> to interact";
+        requiredNotif.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        requiredNotif.SetActive(false);
     }
 }

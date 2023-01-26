@@ -610,8 +610,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerPanel: {fileID: 7668440936934465313}
-  requiredItemID: 0
+  requiredItemID: 1
   theInteract: {fileID: 0}
+  requiredNotif: {fileID: 0}
+  requiredNotifTxt: {fileID: 0}
 --- !u!1 &1781872738144959584
 GameObject:
   m_ObjectHideFlags: 0
@@ -973,8 +975,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerPanel: {fileID: 6611422952388405361}
-  requiredItemID: 0
+  requiredItemID: 1
   theInteract: {fileID: 0}
+  requiredNotif: {fileID: 0}
+  requiredNotifTxt: {fileID: 0}
 --- !u!1 &2451980735639378966
 GameObject:
   m_ObjectHideFlags: 0
@@ -1766,8 +1770,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerPanel: {fileID: 7585484818637174011}
-  requiredItemID: 0
+  requiredItemID: 1
   theInteract: {fileID: 0}
+  requiredNotif: {fileID: 0}
+  requiredNotifTxt: {fileID: 0}
 --- !u!1 &3665000885618852332
 GameObject:
   m_ObjectHideFlags: 0
@@ -2046,8 +2052,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerPanel: {fileID: 2624296041398956153}
-  requiredItemID: 0
+  requiredItemID: 1
   theInteract: {fileID: 0}
+  requiredNotif: {fileID: 0}
+  requiredNotifTxt: {fileID: 0}
 --- !u!1 &4314253976083755727
 GameObject:
   m_ObjectHideFlags: 0
@@ -2492,8 +2500,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerPanel: {fileID: 6004445885617865103}
-  requiredItemID: 0
+  requiredItemID: 1
   theInteract: {fileID: 0}
+  requiredNotif: {fileID: 0}
+  requiredNotifTxt: {fileID: 0}
 --- !u!1 &4857460994816202677
 GameObject:
   m_ObjectHideFlags: 0
@@ -2772,8 +2782,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerPanel: {fileID: 5702818429133062496}
-  requiredItemID: 0
+  requiredItemID: 1
   theInteract: {fileID: 0}
+  requiredNotif: {fileID: 0}
+  requiredNotifTxt: {fileID: 0}
 --- !u!1 &5702818429133062496
 GameObject:
   m_ObjectHideFlags: 0
@@ -3204,7 +3216,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   theInteract: {fileID: 0}
-  requiredItemID: 0
+  requiredItemID: 3
+  requiredNotif: {fileID: 0}
+  requiredNotifTxt: {fileID: 0}
 --- !u!65 &1878852741759275315
 BoxCollider:
   m_ObjectHideFlags: 0

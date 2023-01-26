@@ -1,6 +1,7 @@
 using StarterAssets;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -15,6 +16,9 @@ public class ChargingFlashlight : MonoBehaviour, IInteractable
     [SerializeField] private SetInteractionName theSetInteractionName;
     [SerializeField] private GameObject interactionNameUI;
     private SoundsManager soundsManager;
+
+    [SerializeField] private GameObject requiredNotif;
+    [SerializeField] private TextMeshProUGUI requiredNotifTxt;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +55,18 @@ public class ChargingFlashlight : MonoBehaviour, IInteractable
                 theSetInteractionName.SetName(interactionName);
                 soundsManager.PlaySfx(4);
             }
+            else
+            {
+                StartCoroutine(NeedItemNotif());
+            }
         }
+    }
+
+    IEnumerator NeedItemNotif()
+    {
+        requiredNotifTxt.text = "You need <color=yellow>Flashlight Charger</color> to interact";
+        requiredNotif.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        requiredNotif.SetActive(false);
     }
 }
