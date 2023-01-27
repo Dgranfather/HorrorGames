@@ -11,17 +11,9 @@ public class PowerBoxPanel : MonoBehaviour, IInteractable
 
     [SerializeField] private GameObject requiredNotif;
     [SerializeField] private TextMeshProUGUI requiredNotifTxt;
-    // Start is called before the first frame update
-    void Start()
-    {
-       
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
+    public int PanelOn = 0;
 
-    }
     public void interact()
     {
         if (theInteract.itemID == requiredItemID)
@@ -32,6 +24,7 @@ public class PowerBoxPanel : MonoBehaviour, IInteractable
             //destroying item
             Destroy(theInteract.theGrabable.gameObject);
             theInteract.setHandNull();
+            PanelOn++;
         }
         else
         {
