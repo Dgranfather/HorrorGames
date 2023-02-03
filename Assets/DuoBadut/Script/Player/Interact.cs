@@ -8,7 +8,7 @@ public class Interact : MonoBehaviour
 {
     
     [SerializeField] private Transform playerCamTransform;
-    [SerializeField] private Transform grabpointTransform;
+    [SerializeField] private Transform grabpointPowerPanel, grabpointCharger;
     [SerializeField] private LayerMask everythingLayer;
     [SerializeField] private float rayDistance;
     [SerializeField] private GameObject interactSign;
@@ -97,7 +97,16 @@ public class Interact : MonoBehaviour
                         {
                             itemID = theGrabable.itemID;
                             isHolding = true;
-                            theGrabable.Grab(grabpointTransform);
+
+                            if (theGrabable.itemID == 1)
+                            {
+                                theGrabable.Grab(grabpointPowerPanel);
+                            }
+                            else if(theGrabable.itemID == 2)
+                            {
+                                theGrabable.Grab(grabpointCharger);
+                            }
+
                             StartCoroutine(Pickingup());
                         }
                     }

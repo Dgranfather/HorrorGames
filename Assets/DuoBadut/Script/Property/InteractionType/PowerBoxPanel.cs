@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PowerBoxPanel : MonoBehaviour, IInteractable
@@ -8,23 +9,34 @@ public class PowerBoxPanel : MonoBehaviour, IInteractable
     [SerializeField] private int requiredItemID;
     public Interact theInteract;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-       
-    }
+    [SerializeField] private GameObject requiredNotif;
+    [SerializeField] private TextMeshProUGUI requiredNotifTxt;
 
-    // Update is called once per frame
-    void Update()
-    {
+    public int PanelOn = 0;
 
-    }
     public void interact()
     {
         if (theInteract.itemID == requiredItemID)
         {
             powerPanel.SetActive(true);
             gameObject.tag = "Untagged";
+
+            //destroying item
+            Destroy(theInteract.theGrabable.gameObject);
+            theInteract.setHandNull();
+            PanelOn++;
         }
+        else
+        {
+            StartCoroutine(NeedItemNotif());
+        }
+    }
+
+    IEnumerator NeedItemNotif()
+    {
+        requiredNotifTxt.text = "You need <color=yellow>Power Panel</color> to interact";
+        requiredNotif.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        requiredNotif.SetActive(false);
     }
 }
