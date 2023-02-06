@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 6900469896039924527}
   m_Layer: 7
   m_Name: Drawer_02
-  m_TagString: Untagged
+  m_TagString: DrawerGround
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -179,8 +179,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.70366776, y: 0.26632532, z: 0.7477159}
-  m_Center: {x: -0.35183424, y: -0.000000044703484, z: -0.00000017881393}
+  m_Size: {x: 0.7036678, y: 0.01800403, z: 0.7477159}
+  m_Center: {x: -0.35183424, y: -0.12416069, z: -0.00000017881393}
 --- !u!1 &470931240923032912
 GameObject:
   m_ObjectHideFlags: 0
@@ -1797,7 +1797,7 @@ GameObject:
   - component: {fileID: 5054744760213015203}
   m_Layer: 7
   m_Name: Drawer_R_02
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1893,7 +1893,7 @@ GameObject:
   - component: {fileID: 5054744760741816926}
   m_Layer: 7
   m_Name: Drawer_R_01
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1989,7 +1989,7 @@ GameObject:
   - component: {fileID: 5054744761299593837}
   m_Layer: 7
   m_Name: Drawer_L_01
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2084,7 +2084,7 @@ GameObject:
   - component: {fileID: 8624972760291778452}
   m_Layer: 7
   m_Name: Drawer_01
-  m_TagString: Untagged
+  m_TagString: DrawerGround
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2166,8 +2166,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.70366776, y: 0.53812134, z: 0.74771595}
-  m_Center: {x: -0.35183424, y: 0, z: 0.000000029802322}
+  m_Size: {x: 0.7036678, y: 0.02411741, z: 0.74771595}
+  m_Center: {x: -0.35183424, y: -0.25700197, z: 0.00000002980232}
 --- !u!1 &7016699529221900066
 GameObject:
   m_ObjectHideFlags: 0
@@ -2182,7 +2182,7 @@ GameObject:
   - component: {fileID: 761984312840180536}
   m_Layer: 7
   m_Name: Drawer_03
-  m_TagString: Untagged
+  m_TagString: DrawerGround
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2264,8 +2264,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.70366776, y: 0.2663253, z: 0.7477159}
-  m_Center: {x: -0.35183424, y: -0.000000029802322, z: -0.00000017881393}
+  m_Size: {x: 0.7036678, y: 0.0247975, z: 0.7477159}
+  m_Center: {x: -0.35183424, y: -0.12076393, z: -0.00000017881393}
 --- !u!1 &7784047108331210253
 GameObject:
   m_ObjectHideFlags: 0
