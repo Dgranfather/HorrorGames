@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 5018950054057871644}
   - component: {fileID: 5018950054057871641}
   - component: {fileID: 5018950054057871646}
-  - component: {fileID: 5018950054057871647}
+  - component: {fileID: 2653563076040710664}
   m_Layer: 0
   m_Name: Bottom
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,6 +29,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5018950055296117031}
   m_Father: {fileID: 5018950055716668700}
@@ -49,7 +50,7 @@ BoxCollider:
   m_Center: {x: 0.39, y: 0.22, z: -0.00000047683716}
 --- !u!95 &5018950054057871646
 Animator:
-  serializedVersion: 3
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -62,11 +63,12 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5018950054057871647
+  m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &2653563076040710664
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -75,12 +77,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5018950054057871645}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0d5557a01f4e0740bd53d6ed2ab7327, type: 3}
+  m_Script: {fileID: 11500000, guid: 995ffcd2f6bcdc6499f6e80e791ad994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pull_01: {fileID: 5018950054057871646}
-  open: 0
-  Player: {fileID: 0}
 --- !u!1 &5018950054084982444
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,6 +108,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0.03866888, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5018950055889833694}
   m_RootOrder: 0
@@ -132,6 +132,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -190,6 +191,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0.038668863, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5018950055296117031}
   m_RootOrder: 0
@@ -213,6 +215,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -254,10 +257,10 @@ GameObject:
   - component: {fileID: 5018950055006186487}
   - component: {fileID: 5018950055006186480}
   - component: {fileID: 5018950055006186481}
-  - component: {fileID: 5018950055006186486}
+  - component: {fileID: 8915019541370355579}
   m_Layer: 0
   m_Name: Top
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -272,6 +275,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5018950055889833694}
   m_Father: {fileID: 5018950055716668700}
@@ -292,7 +296,7 @@ BoxCollider:
   m_Center: {x: 0.39, y: 0.66671884, z: -0.00000047683716}
 --- !u!95 &5018950055006186481
 Animator:
-  serializedVersion: 3
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -305,11 +309,12 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5018950055006186486
+  m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &8915019541370355579
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -318,12 +323,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5018950055006186484}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0d5557a01f4e0740bd53d6ed2ab7327, type: 3}
+  m_Script: {fileID: 11500000, guid: 995ffcd2f6bcdc6499f6e80e791ad994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pull_01: {fileID: 5018950055006186481}
-  open: 0
-  Player: {fileID: 0}
 --- !u!1 &5018950055216721061
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,6 +356,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5018950055716668700}
   m_Father: {fileID: 0}
@@ -378,6 +381,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -445,9 +449,10 @@ GameObject:
   - component: {fileID: 5018950055296117031}
   - component: {fileID: 5018950055296117025}
   - component: {fileID: 5018950055296117030}
+  - component: {fileID: 4252511639867010905}
   m_Layer: 0
   m_Name: Drawer.005
-  m_TagString: Untagged
+  m_TagString: DrawerGround
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -462,6 +467,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.40901947, y: 0.22204363, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5018950054119123286}
   m_Father: {fileID: 5018950054057871644}
@@ -486,6 +492,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -516,6 +523,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4252511639867010905
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5018950055296117028}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.7592097, y: 0.027528822, z: 0.97150284}
+  m_Center: {x: -0.37960482, y: -0.15070155, z: -1.7109168e-15}
 --- !u!1 &5018950055716668701
 GameObject:
   m_ObjectHideFlags: 0
@@ -542,6 +562,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5018950055006186487}
   - {fileID: 5018950054057871644}
@@ -559,9 +580,10 @@ GameObject:
   - component: {fileID: 5018950055889833694}
   - component: {fileID: 5018950055889833691}
   - component: {fileID: 5018950055889833688}
+  - component: {fileID: 759198243120494910}
   m_Layer: 0
   m_Name: Drawer.004
-  m_TagString: Untagged
+  m_TagString: DrawerGround
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -576,6 +598,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.40901947, y: 0.666131, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5018950054084982447}
   m_Father: {fileID: 5018950055006186487}
@@ -600,6 +623,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -630,3 +654,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &759198243120494910
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5018950055889833695}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.7592097, y: 0.027528822, z: 0.97150284}
+  m_Center: {x: -0.37960482, y: -0.15070155, z: -1.7109168e-15}
