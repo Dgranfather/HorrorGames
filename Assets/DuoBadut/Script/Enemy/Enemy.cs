@@ -10,7 +10,6 @@ public class Enemy : MonoBehaviour
     private NavMeshAgent nva;
 
     [SerializeField] private Transform[] patrolPos;
-    [SerializeField] private float walkPointRange;
     private bool walkPointSet = false;
     [SerializeField] private LayerMask Player;
     [SerializeField] private float sightRange;
