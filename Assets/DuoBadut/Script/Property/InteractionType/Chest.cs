@@ -14,16 +14,16 @@ public class Chest : MonoBehaviour, IInteractable
     private Animator animator;
 
     [SerializeField] private bool isTrap;
-    [SerializeField] private GameObject ghost;
-
     private Collider theCollider;
-    [SerializeField] private Transform ghostPos;
+
+    private Enemy theEnemy;
     // Start is called before the first frame update
     void Start()
     {
         soundsManager = FindObjectOfType<SoundsManager>();
         animator = GetComponent<Animator>();
         theCollider = GetComponent<Collider>();
+        theEnemy = FindObjectOfType<Enemy>();
     }
 
     public void interact()
@@ -31,11 +31,11 @@ public class Chest : MonoBehaviour, IInteractable
         if (theInteract.itemID == requiredItemID)
         {
             animator.SetBool("isOpen", true);
+            soundsManager.PlaySfx(6);
             theCollider.enabled = false;
             if(isTrap == true)
             {
-                ghost.transform.position = ghostPos.position;
-                ghost.transform.rotation = Quaternion.identity;
+                theEnemy.warpOnChest();
             }
         }
         else

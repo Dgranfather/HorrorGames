@@ -16,6 +16,9 @@ public class Enemy : MonoBehaviour
     private bool inSightRange;
     private int iPos;
 
+    [SerializeField] private Transform chestGhostPos;
+    private bool canMove = true;
+
     private void Start()
     {
         nva = GetComponent<NavMeshAgent>();
@@ -26,8 +29,8 @@ public class Enemy : MonoBehaviour
         //check for sight
         inSightRange = Physics.CheckSphere(transform.position, sightRange, Player);
 
-        if (inSightRange) ChasePlayer();
-        else if (!inSightRange) Patrol();
+        if (inSightRange && canMove) ChasePlayer();
+        else if (!inSightRange && canMove) Patrol();
         
     }
 
@@ -53,16 +56,6 @@ public class Enemy : MonoBehaviour
 
     private void SearchWalkPoint()
     {
-        //float randomZ = Random.Range(-walkPointRange, walkPointRange);
-        //float randomX = Random.Range(-walkPointRange, walkPointRange);
-
-        //walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-
-        //if(Physics.Raycast(walkPoint, -transform.up, 2f, Ground))
-        //{
-        //    walkPointSet = true;
-        //}
-
         iPos = Random.Range(0, patrolPos.Length);
         walkPointSet = true;
     }
@@ -71,6 +64,19 @@ public class Enemy : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
+    }
+
+    public void warpOnChest()
+    {
+        StartCoroutine(waitASec());
+    }
+
+    IEnumerator waitASec()
+    {
+        canMove = false;
+        nva.Warp(chestGhostPos.position);
+        yield return new WaitForSeconds(1f);
+        canMove = true;
     }
 }
 

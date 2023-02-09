@@ -84,7 +84,7 @@ public class DiggingHole : MonoBehaviour, IInteractable
 
     IEnumerator NeedItemNotif()
     {
-        requiredNotifTxt.text = "You need <color=yellow>Spade</color> to interact";
+        requiredNotifTxt.text = "You need <color=yellow>Spade</color> to Dig this";
         requiredNotif.SetActive(true);
         yield return new WaitForSeconds(2f);
         requiredNotif.SetActive(false);
