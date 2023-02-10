@@ -11,6 +11,8 @@ TagManager:
   - DrawerGround
   - Interactable
   - Grabable
+  - BlessedDoll
+  - CursedDoll
   layers:
   - Default
   - TransparentFX

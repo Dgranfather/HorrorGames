@@ -17,7 +17,9 @@ public class Enemy : MonoBehaviour
     private int iPos;
 
     [SerializeField] private Transform chestGhostPos;
-    private bool canMove = true;
+
+    private Dolls theDolls;
+    [SerializeField] private float stunnedTime;
 
     private void Start()
     {
@@ -29,8 +31,8 @@ public class Enemy : MonoBehaviour
         //check for sight
         inSightRange = Physics.CheckSphere(transform.position, sightRange, Player);
 
-        if (inSightRange && canMove) ChasePlayer();
-        else if (!inSightRange && canMove) Patrol();
+        if (inSightRange) ChasePlayer();
+        else if (!inSightRange) Patrol();
         
     }
 
@@ -68,15 +70,39 @@ public class Enemy : MonoBehaviour
 
     public void warpOnChest()
     {
-        StartCoroutine(waitASec());
+        StartCoroutine(Warping());
     }
 
-    IEnumerator waitASec()
+    IEnumerator Warping()
     {
-        canMove = false;
+        nva.isStopped = true;
         nva.Warp(chestGhostPos.position);
         yield return new WaitForSeconds(1f);
-        canMove = true;
+        nva.isStopped = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.name == "Doll")
+        {
+            Debug.Log("colllide with doll");
+            if (other.TryGetComponent(out theDolls))
+            {
+                if (theDolls.isBlessed)
+                {
+                    StartCoroutine(CursingDoll());
+                }
+            }
+        }
+    }
+
+    IEnumerator CursingDoll()
+    {
+        Debug.Log("cursing doll");
+        nva.isStopped = true;
+        yield return new WaitForSeconds(stunnedTime);
+        theDolls.isBlessed = false;
+        nva.isStopped = false;
     }
 }
 
