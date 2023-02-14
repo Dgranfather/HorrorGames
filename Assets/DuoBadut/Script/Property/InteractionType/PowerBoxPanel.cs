@@ -34,7 +34,7 @@ public class PowerBoxPanel : MonoBehaviour, IInteractable
 
     IEnumerator NeedItemNotif()
     {
-        requiredNotifTxt.text = "You need <color=yellow>Power Panel</color> to interact";
+        requiredNotifTxt.text = "You need <color=yellow>Ritual Panel</color> to interact";
         requiredNotif.SetActive(true);
         yield return new WaitForSeconds(2f);
         requiredNotif.SetActive(false);

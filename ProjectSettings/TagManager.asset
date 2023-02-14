@@ -5,13 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - CinemachineTarget
-  - GrabableObj
   - CraftPos
   - Enemy
   - DrawerGround
   - Interactable
   - Grabable
   - BlessedDoll
+  - CraftingTable
+  - Undefined
   - CursedDoll
   layers:
   - Default

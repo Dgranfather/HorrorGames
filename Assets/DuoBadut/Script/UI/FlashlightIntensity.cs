@@ -41,6 +41,10 @@ public class FlashlightIntensity : MonoBehaviour
                 baterySlider.value = currentBatery;
                 fill.color = gradient.Evaluate(baterySlider.normalizedValue);
             }
+            else
+            {
+                flashlight.intensity = 0;
+            }
         }
     }
 
@@ -52,7 +56,6 @@ public class FlashlightIntensity : MonoBehaviour
             baterySlider.value = currentBatery;
             fill.color = gradient.Evaluate(baterySlider.normalizedValue);
         }
-
     }
 
 }

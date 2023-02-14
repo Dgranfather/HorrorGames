@@ -8,7 +8,9 @@ public class Interact : MonoBehaviour
 {
     
     [SerializeField] private Transform playerCamTransform;
-    [SerializeField] private Transform grabpointPowerPanel, grabpointCharger;
+    [SerializeField] private Transform grabpointPowerPanel, grabpointCharger, grabpointDoll, 
+    grabpointPowerBoxKey, grabpointCrowbarHead, grabpointCrowbarBack, grabpointCrowbar, 
+        grabpointSpadeHead, grabpointSpadeHolder, grabpointSpade, grabpointHolyWater;
     [SerializeField] private LayerMask everythingLayer;
     [SerializeField] private float rayDistance;
     [SerializeField] private GameObject interactSign;
@@ -106,7 +108,42 @@ public class Interact : MonoBehaviour
                             {
                                 theGrabable.Grab(grabpointCharger);
                             }
-
+                            else if(theGrabable.itemID == 3 || theGrabable.itemID == 4)
+                            {
+                                theGrabable.Grab(grabpointDoll);
+                            }
+                            else if (theGrabable.itemID == 5 || theGrabable.itemID == 6 || theGrabable.itemID == 7)
+                            {
+                                theGrabable.Grab(grabpointPowerBoxKey);
+                            }
+                            else if (theGrabable.itemID == 8)
+                            {
+                                theGrabable.Grab(grabpointCrowbarHead);
+                            }
+                            else if (theGrabable.itemID == 9)
+                            {
+                                theGrabable.Grab(grabpointCrowbarBack);
+                            }
+                            else if (theGrabable.itemID == 10)
+                            {
+                                theGrabable.Grab(grabpointCrowbar);
+                            }
+                            else if (theGrabable.itemID == 11)
+                            {
+                                theGrabable.Grab(grabpointSpadeHolder);
+                            }
+                            else if (theGrabable.itemID == 12)
+                            {
+                                theGrabable.Grab(grabpointSpadeHead);
+                            }
+                            else if (theGrabable.itemID == 13)
+                            {
+                                theGrabable.Grab(grabpointSpade);
+                            }
+                            else if (theGrabable.itemID == 14)
+                            {
+                                theGrabable.Grab(grabpointHolyWater);
+                            }
                             StartCoroutine(Pickingup());
                         }
                     }

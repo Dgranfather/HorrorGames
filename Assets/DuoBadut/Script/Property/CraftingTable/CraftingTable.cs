@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CraftingTable : MonoBehaviour, IInteractable
@@ -9,6 +10,9 @@ public class CraftingTable : MonoBehaviour, IInteractable
 
     public Grabable theGrabable, _grabable;
     public GameObject[] craftingOutput;
+
+    [SerializeField] private GameObject requiredNotif;
+    [SerializeField] private TextMeshProUGUI requiredNotifTxt;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +27,7 @@ public class CraftingTable : MonoBehaviour, IInteractable
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "GrabableObj")
+        if (other.tag == "Grabable")
         {
             if (theGrabable == null)
             {
@@ -46,9 +50,10 @@ public class CraftingTable : MonoBehaviour, IInteractable
 
     public void interact()
     {
-        if(idItem1 == 1 && idItem2 == 2 || idItem1 == 2 && idItem2 == 1)
+        if(idItem1 == 3 && idItem2 == 14 || idItem1 == 14 && idItem2 == 3)
         {
-            Debug.Log("destroy required items");
+            //blessed doll
+            //Debug.Log("destroy required items");
             Destroy(theGrabable.gameObject);
             Destroy(_grabable.gameObject);
             idItem1 = 0;
@@ -59,9 +64,55 @@ public class CraftingTable : MonoBehaviour, IInteractable
             //just this one that need to change if any other item added for crafting
             Instantiate(craftingOutput[0], outputPos.position, outputPos.rotation);
         }
+        else if (idItem1 == 8 && idItem2 == 9 || idItem1 == 9 && idItem2 == 8)
+        {
+            //crowbar
+            //Debug.Log("destroy required items");
+            Destroy(theGrabable.gameObject);
+            Destroy(_grabable.gameObject);
+            idItem1 = 0;
+            theGrabable = null;
+            idItem2 = 0;
+            _grabable = null;
+
+            Instantiate(craftingOutput[1], outputPos.position, outputPos.rotation);
+        }
+        else if (idItem1 == 11 && idItem2 == 12 || idItem1 == 12 && idItem2 == 11)
+        {
+            //spade
+            //Debug.Log("destroy required items");
+            Destroy(theGrabable.gameObject);
+            Destroy(_grabable.gameObject);
+            idItem1 = 0;
+            theGrabable = null;
+            idItem2 = 0;
+            _grabable = null;
+
+            Instantiate(craftingOutput[2], outputPos.position, outputPos.rotation);
+        }
+        else if(idItem1 == null && idItem2 == null || idItem1 == 0 && idItem2 == 0)
+        {
+            StartCoroutine(NeedItemNotif());
+        }
         else
         {
-            Debug.Log("wrong combination");
+            StartCoroutine(WrongCombination());
         }
+    }
+
+    IEnumerator NeedItemNotif()
+    {
+        requiredNotifTxt.text = "Put the necessary items above the table";
+        requiredNotif.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        requiredNotif.SetActive(false);
+    }
+
+    IEnumerator WrongCombination()
+    {
+        requiredNotifTxt.text = "Wrong item combination";
+        requiredNotif.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        requiredNotif.SetActive(false);
     }
 }

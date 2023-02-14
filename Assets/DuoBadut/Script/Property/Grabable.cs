@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class Grabable : MonoBehaviour
 {
-    private bool onGrab = false;
+    public bool onGrab = false;
     private Rigidbody rb;
     private Transform grabpoint;
     public int itemID;
     public string nameItem;
     [SerializeField] private GameObject blinkingEff;
 
+    private Enemy theEnemy;
+    private SoundsManager soundsManager;
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        theEnemy = FindObjectOfType<Enemy>();
+        soundsManager = FindObjectOfType<SoundsManager>();
     }
 
     public void Grab(Transform grabpointTransform)
@@ -31,6 +35,9 @@ public class Grabable : MonoBehaviour
         grabpoint = null;
         rb.useGravity = true;
         onGrab = false;
+
+        theEnemy.CheckDroppedItem(transform);
+        soundsManager.PlaySfx(7);
     }
 
     private void Update()
@@ -68,6 +75,11 @@ public class Grabable : MonoBehaviour
         if (collision.gameObject.tag == "DrawerGround")
         {
             transform.SetParent(collision.gameObject.transform);
+        }
+        else if(collision.gameObject.tag == "CraftingTable")
+        {
+            //Debug.Log("collide with ct");
+            theEnemy.checkingItem = false;
         }
     }
 }

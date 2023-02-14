@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Animations.Rigging;
 
 public class Enemy : MonoBehaviour
 {
@@ -20,10 +21,34 @@ public class Enemy : MonoBehaviour
 
     private Dolls theDolls;
     [SerializeField] private float stunnedTime;
+    [SerializeField] private Transform grabPoint;
+
+    public float amplitude = 1.0f;
+    public float frequency = 1.0f;
+    private float currentY;
+    private float startY;
+
+    [SerializeField] private Rig rig1, rig2;
+    private float targetWeight1, targetWeight2;
+    private bool cursing;
+
+    public bool checkingItem = false;
+    private bool onCheck = false;
+
+    private MusicManager musicManager;
+    private MusicManager2 music2Manager;
 
     private void Start()
     {
         nva = GetComponent<NavMeshAgent>();
+        startY = transform.position.y;
+        targetWeight1 = 1;
+        targetWeight2 = 0;
+        cursing = false;
+
+        musicManager = FindObjectOfType<MusicManager>();
+        music2Manager = FindObjectOfType<MusicManager2>();
+        musicManager.PlayMusic(0);
     }
 
     private void Update()
@@ -31,9 +56,55 @@ public class Enemy : MonoBehaviour
         //check for sight
         inSightRange = Physics.CheckSphere(transform.position, sightRange, Player);
 
-        if (inSightRange) ChasePlayer();
-        else if (!inSightRange) Patrol();
-        
+        if (cursing)
+        {
+            musicManager.PlayMusic(0);
+        }
+        else if (inSightRange)
+        {
+            ChasePlayer();
+            if (musicManager.GetCurrentPlaying() != 1)
+            {
+                musicManager.PlayMusic(1);
+            }
+        }
+        else if (checkingItem && !inSightRange)
+        {
+            if (nva.remainingDistance < 0.5f && onCheck == false)
+            {
+                StartCoroutine(WaitChecking());
+            }
+            if (musicManager.GetCurrentPlaying() != 0)
+            {
+                musicManager.PlayMusic(0);
+            }
+        }
+        else if (!inSightRange && !checkingItem)
+        { 
+            Patrol();
+            if (musicManager.GetCurrentPlaying() != 0)
+            {
+                musicManager.PlayMusic(0);
+            }
+        }
+
+        MovingUpandDown();
+    }
+
+    private void FixedUpdate()
+    {
+        rig1.weight = Mathf.Lerp(rig1.weight, targetWeight1, Time.deltaTime * 10f);
+        rig2.weight = Mathf.Lerp(rig2.weight, targetWeight2, Time.deltaTime * 10f);
+    }
+
+    private void MovingUpandDown()
+    {
+        if (!cursing)
+        {
+            //moving up and down
+            currentY = startY + Mathf.Sin(Time.time * frequency) * amplitude;
+            transform.position = new Vector3(transform.position.x, currentY, transform.position.z);
+        }
     }
 
     private void ChasePlayer()
@@ -47,7 +118,7 @@ public class Enemy : MonoBehaviour
     private void Patrol()
     {
         if (!walkPointSet) SearchWalkPoint();
-        if (walkPointSet) nva.SetDestination(patrolPos[iPos].position);
+        if (walkPointSet) /*nva.SetDestination(patrolPos[iPos].position);*/ nva.destination = patrolPos[iPos].position;
 
         Vector3 distanceToWalkPoint = transform.position - patrolPos[iPos].position;
 
@@ -83,14 +154,16 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name == "Doll")
+        if(other.gameObject.tag == "Grabable")
         {
-            Debug.Log("colllide with doll");
             if (other.TryGetComponent(out theDolls))
             {
-                if (theDolls.isBlessed)
+                if (theDolls.onGrab == false)
                 {
-                    StartCoroutine(CursingDoll());
+                    if (theDolls.isBlessed)
+                    {
+                        StartCoroutine(CursingDoll());
+                    }
                 }
             }
         }
@@ -98,11 +171,37 @@ public class Enemy : MonoBehaviour
 
     IEnumerator CursingDoll()
     {
-        Debug.Log("cursing doll");
+        //Debug.Log("cursing doll");
         nva.isStopped = true;
+        theDolls.Grab(grabPoint);
+        targetWeight1 = 0;
+        targetWeight2 = 1;
+        cursing = true;
+        music2Manager.PlayMusic2(0);
         yield return new WaitForSeconds(stunnedTime);
+        theDolls.Drop();
         theDolls.isBlessed = false;
+        targetWeight1 = 1;
+        targetWeight2 = 0;
+        cursing = false;
         nva.isStopped = false;
+        music2Manager.StopMusic2();
+        checkingItem = false;
+    }
+
+    public void CheckDroppedItem(Transform dropPos)
+    {
+        checkingItem = true;
+        nva.destination = dropPos.position;
+    }
+
+    IEnumerator WaitChecking()
+    {
+        onCheck = true;
+        Debug.Log("Remaining dis : "+nva.remainingDistance);
+        yield return new WaitForSeconds(2f);
+        onCheck = false;
+        checkingItem = false;
     }
 }
 

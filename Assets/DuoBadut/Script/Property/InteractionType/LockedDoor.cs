@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using static UnityEditor.Progress;
 
@@ -13,6 +14,9 @@ public class LockedDoor : MonoBehaviour, IInteractable
     [SerializeField] Transform doorHandle;
 
     private SoundsManager soundsManager;
+
+    [SerializeField] private GameObject requiredNotif;
+    [SerializeField] private TextMeshProUGUI requiredNotifTxt;
 
     void Start()
     {
@@ -51,7 +55,7 @@ public class LockedDoor : MonoBehaviour, IInteractable
             }
             else
             {
-                Debug.Log("You need this item : " + requiredItemID);
+                StartCoroutine(NeedItemNotif());
             }
         }
 
@@ -74,5 +78,13 @@ public class LockedDoor : MonoBehaviour, IInteractable
         soundsManager.PlaySfx(1);
         open = false;
         yield return new WaitForSeconds(.5f);
+    }
+
+    IEnumerator NeedItemNotif()
+    {
+        requiredNotifTxt.text = "You need <color=yellow>Ruang Pribadi Key</color> to open this";
+        requiredNotif.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        requiredNotif.SetActive(false);
     }
 }
