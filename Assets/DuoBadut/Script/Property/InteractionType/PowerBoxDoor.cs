@@ -38,7 +38,7 @@ public class PowerBoxDoor : MonoBehaviour, IInteractable
 
     IEnumerator NeedItemNotif()
     {
-        requiredNotifTxt.text = "You need <color=yellow>Power Box Key</color> to interact";
+        requiredNotifTxt.text = "You need <color=yellow>Ritual Box Key</color> to open this";
         requiredNotif.SetActive(true);
         yield return new WaitForSeconds(2f);
         requiredNotif.SetActive(false);

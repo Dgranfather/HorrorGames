@@ -133,7 +133,7 @@ namespace StarterAssets
 			//sfx footsteps walking & runing
 			if(_speed > 0 && _speed <= MoveSpeed && Grounded)
 			{
-				walkingSfx.pitch = 0.78f;
+				walkingSfx.pitch = 0.75f;
 				walkingSfx.enabled = true;
 			}
 			else if(_speed > 0 && _speed > MoveSpeed && Grounded)

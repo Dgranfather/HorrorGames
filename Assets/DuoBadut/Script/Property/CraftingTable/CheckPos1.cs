@@ -16,7 +16,7 @@ public class CheckPos1 : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "GrabableObj")
+        if (other.tag == "Grabable")
         {
             theCraftingTable.idItem1 = 0;
             theCraftingTable.theGrabable = null;
