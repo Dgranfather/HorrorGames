@@ -58,6 +58,7 @@ public class Dolls : MonoBehaviour
     {
         rb.useGravity = false;
         grabpoint = grabpointTransform;
+        gameObject.tag = "Untagged";
     }
 
     public void Drop()
@@ -65,5 +66,6 @@ public class Dolls : MonoBehaviour
         transform.SetParent(null);
         rb.useGravity = true;
         grabpoint = null;
+        gameObject.tag = "Grabable";
     }
 }

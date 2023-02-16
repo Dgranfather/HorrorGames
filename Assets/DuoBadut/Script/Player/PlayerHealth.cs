@@ -7,9 +7,11 @@ public class PlayerHealth : MonoBehaviour
     public int startingHealth;
     public int currentHealth;
 
+    private Enemy theEnemy;
     void Start()
     {
         currentHealth = startingHealth;
+        theEnemy = FindObjectOfType<Enemy>();
     }
 
     //void OnCollisionEnter(Collision collision)
@@ -32,13 +34,16 @@ public class PlayerHealth : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-            currentHealth--;
-            if (currentHealth <= 0)
+            if (!theEnemy.cursing)
             {
-                Debug.Log("dead");
-                // player is dead
-                // you can add code here to handle the death of the player
-                // for example, you can load a game over scene or restart the level
+                currentHealth--;
+                if (currentHealth <= 0)
+                {
+                    Debug.Log("dead");
+                    // player is dead
+                    // you can add code here to handle the death of the player
+                    // for example, you can load a game over scene or restart the level
+                }
             }
         }
     }

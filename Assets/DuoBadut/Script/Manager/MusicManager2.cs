@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MusicManager2 : MonoBehaviour
 {
-    private AudioSource music2AudioSource;
+    public AudioSource music2AudioSource;
 
     [SerializeField] private AudioClip[] theAudioClip;
 
@@ -12,7 +12,7 @@ public class MusicManager2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        music2AudioSource = GetComponent<AudioSource>();
+        //music2AudioSource = GetComponent<AudioSource>();
     }
 
     public void PlayMusic2(int music2ID)

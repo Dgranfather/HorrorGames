@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class SoundsManager : MonoBehaviour
 {
-    private AudioSource sfxAudioSource;
+    public AudioSource sfxAudioSource;
 
     [SerializeField] private AudioClip[] theAudioClip;
 
     void Start()
     {
-        sfxAudioSource = GetComponent<AudioSource>();
+        //sfxAudioSource = GetComponent<AudioSource>();
     }
 
     public void PlaySfx(int sfxID)

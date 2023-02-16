@@ -90,7 +90,7 @@ public class CraftingTable : MonoBehaviour, IInteractable
 
             Instantiate(craftingOutput[2], outputPos.position, outputPos.rotation);
         }
-        else if(idItem1 == null && idItem2 == null || idItem1 == 0 && idItem2 == 0)
+        else if(idItem1 == 0 && idItem2 == 0)
         {
             StartCoroutine(NeedItemNotif());
         }
