@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MusicManager : MonoBehaviour
 {
-    private AudioSource musicAudioSource;
+    public AudioSource musicAudioSource;
 
     [SerializeField] private AudioClip[] theAudioClip;
 
@@ -12,7 +12,7 @@ public class MusicManager : MonoBehaviour
     private float targetVolume;
     void Start()
     {
-        musicAudioSource = GetComponent<AudioSource>();
+        //musicAudioSource = GetComponent<AudioSource>();
         targetVolume = musicAudioSource.volume;
     }
 

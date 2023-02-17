@@ -30,13 +30,19 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private Rig rig1, rig2;
     private float targetWeight1, targetWeight2;
-    private bool cursing;
+    public bool cursing;
 
     public bool checkingItem = false;
     private bool onCheck = false;
 
     private MusicManager musicManager;
     private MusicManager2 music2Manager;
+
+    private void Awake()
+    {
+        musicManager = FindObjectOfType<MusicManager>();
+        music2Manager = FindObjectOfType<MusicManager2>();
+    }
 
     private void Start()
     {
@@ -45,9 +51,7 @@ public class Enemy : MonoBehaviour
         targetWeight1 = 1;
         targetWeight2 = 0;
         cursing = false;
-
-        musicManager = FindObjectOfType<MusicManager>();
-        music2Manager = FindObjectOfType<MusicManager2>();
+        
         musicManager.PlayMusic(0);
     }
 
@@ -123,7 +127,7 @@ public class Enemy : MonoBehaviour
         Vector3 distanceToWalkPoint = transform.position - patrolPos[iPos].position;
 
         //Walkpoint reached
-        if(distanceToWalkPoint.magnitude < 2f)
+        if(distanceToWalkPoint.magnitude < 2.5f)
             walkPointSet = false;
     }
 
