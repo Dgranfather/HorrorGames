@@ -14,7 +14,7 @@ public class RandomLocation : MonoBehaviour
         {
             Transform randomLocation = GetRandomLocation();
             obj.transform.position = randomLocation.position;
-            obj.transform.rotation = randomLocation.rotation;
+            obj.transform.rotation = Quaternion.identity;
         }
     }
 
