@@ -14,6 +14,7 @@ TagManager:
   - CraftingTable
   - Undefined
   - CursedDoll
+  - RitualActive
   layers:
   - Default
   - TransparentFX
