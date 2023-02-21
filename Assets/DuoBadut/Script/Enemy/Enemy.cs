@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private Transform target;
     private NavMeshAgent nva;
+    public bool onDazzled = false;
+    [SerializeField] private float dazzleTime;
 
     [SerializeField] private Transform[] patrolPos;
     private bool walkPointSet = false;
@@ -28,8 +30,8 @@ public class Enemy : MonoBehaviour
     private float currentY;
     private float startY;
 
-    [SerializeField] private Rig rig1, rig2;
-    private float targetWeight1, targetWeight2;
+    [SerializeField] private Rig rig1, rig2,rig3;
+    private float targetWeight1, targetWeight2, targetWeight3;
     public bool cursing;
 
     public bool checkingItem = false;
@@ -50,6 +52,7 @@ public class Enemy : MonoBehaviour
         startY = transform.position.y;
         targetWeight1 = 1;
         targetWeight2 = 0;
+        targetWeight3 = 0;
         cursing = false;
         
         musicManager.PlayMusic(0);
@@ -60,10 +63,10 @@ public class Enemy : MonoBehaviour
         //check for sight
         inSightRange = Physics.CheckSphere(transform.position, sightRange, Player);
 
-        if (cursing)
+        if (cursing || onDazzled)
         {
             musicManager.PlayMusic(0);
-        }
+        }      
         else if (inSightRange)
         {
             ChasePlayer();
@@ -99,11 +102,12 @@ public class Enemy : MonoBehaviour
     {
         rig1.weight = Mathf.Lerp(rig1.weight, targetWeight1, Time.deltaTime * 10f);
         rig2.weight = Mathf.Lerp(rig2.weight, targetWeight2, Time.deltaTime * 10f);
+        rig3.weight = Mathf.Lerp(rig3.weight, targetWeight3, Time.deltaTime * 10f);
     }
 
     private void MovingUpandDown()
     {
-        if (!cursing)
+        if (!cursing && !onDazzled)
         {
             //moving up and down
             currentY = startY + Mathf.Sin(Time.time * frequency) * amplitude;
@@ -180,6 +184,7 @@ public class Enemy : MonoBehaviour
         theDolls.Grab(grabPoint);
         targetWeight1 = 0;
         targetWeight2 = 1;
+        targetWeight3 = 0;
         cursing = true;
         music2Manager.PlayMusic2(0);
         yield return new WaitForSeconds(stunnedTime);
@@ -187,6 +192,7 @@ public class Enemy : MonoBehaviour
         theDolls.isBlessed = false;
         targetWeight1 = 1;
         targetWeight2 = 0;
+        targetWeight3 = 0;
         cursing = false;
         nva.isStopped = false;
         music2Manager.StopMusic2();
@@ -206,6 +212,23 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(2f);
         onCheck = false;
         checkingItem = false;
+    }
+
+    public IEnumerator Dazzled()
+    {
+        nva.isStopped = true;
+        onDazzled = true;
+        music2Manager.PlayMusic2(1);
+        targetWeight1 = 0;
+        targetWeight2 = 0;
+        targetWeight3 = 1;
+        yield return new WaitForSeconds(dazzleTime);
+        targetWeight1 = 1;
+        targetWeight2 = 0;
+        targetWeight3 = 0;
+        nva.isStopped = false;
+        music2Manager.StopMusic2();
+        onDazzled = false;
     }
 }
 
