@@ -20,7 +20,7 @@ public class FlashlightIntensity : MonoBehaviour
 
     //flashlight to enemy
     [SerializeField] private Transform playerCamTransform;
-    [SerializeField] private LayerMask everythingLayer;
+    [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private float rayDistance;
     private Enemy theEnemy;
     private float currentHitTime = 0f;
@@ -52,7 +52,7 @@ public class FlashlightIntensity : MonoBehaviour
                 fill.color = gradient.Evaluate(baterySlider.normalizedValue);
 
                 //flashlight reduce enemy speed
-                if (Physics.Raycast(playerCamTransform.position, playerCamTransform.forward, out RaycastHit rayHit, rayDistance, everythingLayer))
+                if (Physics.Raycast(playerCamTransform.position, playerCamTransform.forward, out RaycastHit rayHit, rayDistance, enemyLayer))
                 {
                     if (rayHit.collider.gameObject.tag == "Enemy")
                     {
@@ -61,7 +61,6 @@ public class FlashlightIntensity : MonoBehaviour
                             if (theEnemy.onDazzled == false)
                             {
                                 currentHitTime -= Time.deltaTime;
-                                //if (Time.time - currentHitTime >= rayDuration)
                                 if(currentHitTime <= 0)
                                 {
                                     StartCoroutine(theEnemy.Dazzled());
@@ -70,7 +69,6 @@ public class FlashlightIntensity : MonoBehaviour
                             }
                             else
                             {
-                                //currentHitTime = Time.time;
                                 currentHitTime = rayDuration;
                             }
                         }
@@ -79,6 +77,10 @@ public class FlashlightIntensity : MonoBehaviour
                     {
                         currentHitTime = rayDuration;
                     }
+                }
+                else
+                {
+                    currentHitTime = rayDuration;
                 }
             }
             else

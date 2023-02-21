@@ -30,8 +30,8 @@ public class Enemy : MonoBehaviour
     private float currentY;
     private float startY;
 
-    [SerializeField] private Rig rig1, rig2,rig3;
-    private float targetWeight1, targetWeight2, targetWeight3;
+    [SerializeField] private Rig rig1, rig2, rig3, rig4;
+    private float targetWeight1, targetWeight2, targetWeight3, targetWeight4;
     public bool cursing;
 
     public bool checkingItem = false;
@@ -39,6 +39,11 @@ public class Enemy : MonoBehaviour
 
     private MusicManager musicManager;
     private MusicManager2 music2Manager;
+
+    private float targetSpeed;
+    private float defaultSpeed;
+    [SerializeField] private float chasingSpeed;
+    private float speedChangeRate = 10f;
 
     private void Awake()
     {
@@ -50,12 +55,15 @@ public class Enemy : MonoBehaviour
     {
         nva = GetComponent<NavMeshAgent>();
         startY = transform.position.y;
-        targetWeight1 = 1;
+        targetWeight1 = 0;
         targetWeight2 = 0;
         targetWeight3 = 0;
+        targetWeight4 = 1;
         cursing = false;
         
         musicManager.PlayMusic(0);
+        defaultSpeed = nva.speed;
+        targetSpeed = nva.speed;
     }
 
     private void Update()
@@ -66,14 +74,22 @@ public class Enemy : MonoBehaviour
         if (cursing || onDazzled)
         {
             musicManager.PlayMusic(0);
+            targetSpeed = defaultSpeed;
+            targetWeight1 = 0;
+            targetWeight4 = 0;
         }      
         else if (inSightRange)
         {
             ChasePlayer();
+            targetWeight1 = 1;
+            targetWeight2 = 0;
+            targetWeight3 = 0;
+            targetWeight4 = 0;
             if (musicManager.GetCurrentPlaying() != 1)
             {
                 musicManager.PlayMusic(1);
             }
+            targetSpeed = chasingSpeed;
         }
         else if (checkingItem && !inSightRange)
         {
@@ -85,14 +101,20 @@ public class Enemy : MonoBehaviour
             {
                 musicManager.PlayMusic(0);
             }
+            targetSpeed = defaultSpeed;
         }
         else if (!inSightRange && !checkingItem)
         { 
             Patrol();
+            targetWeight1 = 0;
+            targetWeight2 = 0;
+            targetWeight3 = 0;
+            targetWeight4 = 1;
             if (musicManager.GetCurrentPlaying() != 0)
             {
                 musicManager.PlayMusic(0);
             }
+            targetSpeed = defaultSpeed;
         }
 
         MovingUpandDown();
@@ -103,6 +125,9 @@ public class Enemy : MonoBehaviour
         rig1.weight = Mathf.Lerp(rig1.weight, targetWeight1, Time.deltaTime * 10f);
         rig2.weight = Mathf.Lerp(rig2.weight, targetWeight2, Time.deltaTime * 10f);
         rig3.weight = Mathf.Lerp(rig3.weight, targetWeight3, Time.deltaTime * 10f);
+        rig4.weight = Mathf.Lerp(rig4.weight, targetWeight4, Time.deltaTime * 10f);
+
+        nva.speed = Mathf.Lerp(nva.speed, targetSpeed, Time.deltaTime * speedChangeRate);
     }
 
     private void MovingUpandDown()
@@ -182,17 +207,19 @@ public class Enemy : MonoBehaviour
         //Debug.Log("cursing doll");
         nva.isStopped = true;
         theDolls.Grab(grabPoint);
-        targetWeight1 = 0;
+        //targetWeight1 = 0;
         targetWeight2 = 1;
-        targetWeight3 = 0;
+        //targetWeight3 = 0;
+        //targetWeight4 = 0;
         cursing = true;
         music2Manager.PlayMusic2(0);
         yield return new WaitForSeconds(stunnedTime);
         theDolls.Drop();
         theDolls.isBlessed = false;
-        targetWeight1 = 1;
+        //targetWeight1 = 1;
         targetWeight2 = 0;
-        targetWeight3 = 0;
+        //targetWeight3 = 0;
+        //targetWeight4 = 0;
         cursing = false;
         nva.isStopped = false;
         music2Manager.StopMusic2();
@@ -219,13 +246,15 @@ public class Enemy : MonoBehaviour
         nva.isStopped = true;
         onDazzled = true;
         music2Manager.PlayMusic2(1);
-        targetWeight1 = 0;
-        targetWeight2 = 0;
+        //targetWeight1 = 0;
+        //targetWeight2 = 0;
         targetWeight3 = 1;
+        //targetWeight4 = 0;
         yield return new WaitForSeconds(dazzleTime);
-        targetWeight1 = 1;
-        targetWeight2 = 0;
+        //targetWeight1 = 1;
+        //targetWeight2 = 0;
         targetWeight3 = 0;
+        //targetWeight4 = 0;
         nva.isStopped = false;
         music2Manager.StopMusic2();
         onDazzled = false;
