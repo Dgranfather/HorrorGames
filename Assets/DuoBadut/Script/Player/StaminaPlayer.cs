@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class StaminaPlayer : MonoBehaviour
 {
     public float currentStamina;
-    private float maxStamina = 100f;
+    public float maxStamina = 100f;
 
     public Slider staminaBar;
     public float dValue;
