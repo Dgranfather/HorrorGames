@@ -5,18 +5,18 @@ using UnityEngine;
 
 public abstract class Interactable : MonoBehaviour
 {
-    [SerializeField] private CanvasGroup _interactableUI;
+    //[SerializeField] private CanvasGroup _interactableUI;
     private bool _playerSign;
 
     private void OnTriggerEnter(Collider col)
     {
-        if(col.gameObject.CompareTag("Player"))
-        {
-            _interactableUI.gameObject.SetActive(true);
-            LeanTween.cancel(_interactableUI.gameObject);
-            LeanTween.alphaCanvas(_interactableUI, 1, 1);
-            _playerSign = true;
-        }
+        //if(col.gameObject.CompareTag("Player"))
+        //{
+        //    _interactableUI.gameObject.SetActive(true);
+        //    LeanTween.cancel(_interactableUI.gameObject);
+        //    LeanTween.alphaCanvas(_interactableUI, 1, 1);
+        //    _playerSign = true;
+        //}
     }
 
     // Update is called once per frame
@@ -30,7 +30,7 @@ public abstract class Interactable : MonoBehaviour
 
     public virtual void Active()
     {
-        _interactableUI.gameObject.SetActive(false);
+        //interactableUI.gameObject.SetActive(false);
     }
 
     public virtual void Deactive()
@@ -40,12 +40,12 @@ public abstract class Interactable : MonoBehaviour
 
     private void OnTriggerExit(Collider col)
     {
-        if(col.gameObject.CompareTag("Player"))
-        {
-            _playerSign = false;
-            LeanTween.alphaCanvas(_interactableUI, 0, 1)
-                .setOnComplete(UIHide);
-        }
+        //if(col.gameObject.CompareTag("Player"))
+        //{
+        //    _playerSign = false;
+        //    LeanTween.alphaCanvas(_interactableUI, 0, 1)
+        //        .setOnComplete(UIHide);
+        //}
     }
 
     private void UIHide()

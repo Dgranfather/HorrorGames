@@ -34,7 +34,7 @@ public class CutSceneTrigger : Interactable
         base.Active();
         _cutsceneToPlay.SetActive(true);
         PlayerControler.Instance.CutsceneCamera.SetActive(true);
-        PlayerControler.Instance.CutscenePlayerCamera.SetActive(true);
+        //PlayerControler.Instance.CutscenePlayerCamera.SetActive(true);
         PlayerControler.Instance.FirstPersonCamera.SetActive(false);
     }
 }

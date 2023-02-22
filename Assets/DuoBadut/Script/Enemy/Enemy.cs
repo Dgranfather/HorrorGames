@@ -259,5 +259,16 @@ public class Enemy : MonoBehaviour
         music2Manager.StopMusic2();
         onDazzled = false;
     }
+
+    public IEnumerator WarpandStunt(float stuntTime)
+    {
+        int warpPos;
+
+        warpPos = Random.Range(0, patrolPos.Length);
+        nva.isStopped = true;
+        nva.Warp(patrolPos[warpPos].position);
+        yield return new WaitForSeconds(stuntTime);
+        nva.isStopped = false;
+    }
 }
 

@@ -7,7 +7,7 @@ public class PlayerControler : MonoBehaviour
     public static PlayerControler Instance;
     public GameObject FirstPersonCamera;
     public GameObject CutsceneCamera;
-    public GameObject CutscenePlayerCamera;
+    //public GameObject CutscenePlayerCamera;
 
     private void Awake()
     {

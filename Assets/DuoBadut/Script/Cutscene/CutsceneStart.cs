@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Timeline;
 
-[RequireComponent(typeof(BoxCollider))]
+//[RequireComponent(typeof(BoxCollider))]
 [RequireComponent(typeof(SignalReceiver))]
 public class CutsceneStart : Interactable
 {
@@ -13,8 +13,8 @@ public class CutsceneStart : Interactable
         base.Active();
         _cutsceneToPlay.SetActive(true);
         PlayerControler.Instance.CutsceneCamera.SetActive(true);
-        PlayerControler.Instance.CutscenePlayerCamera.SetActive(true);
-        PlayerControler.Instance.FirstPersonCamera.SetActive(false);
+        //PlayerControler.Instance.CutscenePlayerCamera.SetActive(true);
+        //PlayerControler.Instance.FirstPersonCamera.SetActive(false);
     }
 
     
@@ -23,7 +23,7 @@ public class CutsceneStart : Interactable
         base.Deactive();
         _cutsceneToPlay.SetActive(false);
         PlayerControler.Instance.CutsceneCamera.SetActive(false);
-        PlayerControler.Instance.CutscenePlayerCamera.SetActive(false);
-        PlayerControler.Instance.FirstPersonCamera.SetActive(true);
+        //PlayerControler.Instance.CutscenePlayerCamera.SetActive(false);
+        //PlayerControler.Instance.FirstPersonCamera.SetActive(true);
     }
 }
