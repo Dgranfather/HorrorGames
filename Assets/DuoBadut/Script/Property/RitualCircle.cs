@@ -9,6 +9,7 @@ public class RitualCircle : MonoBehaviour
         powerBoxPanel4, powerBoxPanel5, powerBoxPanel6;
     private int panelCount = 0;
 
+    [SerializeField] private GameObject ritualActive;
     // Update is called once per frame
     void Update()
     {
@@ -17,7 +18,9 @@ public class RitualCircle : MonoBehaviour
         if(panelCount == 6)
         {
             demonSignEff.SetActive(true);
-            gameObject.tag = "RitualActive";
+            //gameObject.tag = "RitualActive";
+
+            ritualActive.SetActive(true);
         }
     }
 }

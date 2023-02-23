@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Animations.Rigging;
 
-public class Enemy : MonoBehaviour
+public class Enemy : Interactable
 {
     [SerializeField] private Transform target;
     private NavMeshAgent nva;
@@ -45,6 +45,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float chasingSpeed;
     private float speedChangeRate = 10f;
 
+    [SerializeField] private GameObject _cutsceneToPlay;
     private void Awake()
     {
         musicManager = FindObjectOfType<MusicManager>();
@@ -200,8 +201,21 @@ public class Enemy : MonoBehaviour
                 }
             }
         }
+
+        if(other.gameObject.tag == "RitualActive")
+        {
+            Active();
+        }
     }
 
+    public override void Active()
+    {
+        base.Active();
+        _cutsceneToPlay.SetActive(true);
+        PlayerControler.Instance.CutsceneCamera.SetActive(true);
+        //PlayerControler.Instance.CutscenePlayerCamera.SetActive(true);
+        PlayerControler.Instance.FirstPersonCamera.SetActive(false);
+    }
     IEnumerator CursingDoll()
     {
         //Debug.Log("cursing doll");

@@ -64,7 +64,7 @@ public class PlayerHealth : Interactable
         _cutsceneToPlay.SetActive(true);
         PlayerControler.Instance.CutsceneCamera.SetActive(true);
         //PlayerControler.Instance.CutscenePlayerCamera.SetActive(true);
-        //PlayerControler.Instance.FirstPersonCamera.SetActive(false);
+        PlayerControler.Instance.FirstPersonCamera.SetActive(false);
     }
 
     IEnumerator Invul()
@@ -82,7 +82,7 @@ public class PlayerHealth : Interactable
         _cutsceneToPlay.SetActive(false);
         PlayerControler.Instance.CutsceneCamera.SetActive(false);
         //PlayerControler.Instance.CutscenePlayerCamera.SetActive(false);
-        //PlayerControler.Instance.FirstPersonCamera.SetActive(true);
+        PlayerControler.Instance.FirstPersonCamera.SetActive(true);
     }
 
     //private void OnControllerColliderHit(ControllerColliderHit hit)
