@@ -204,6 +204,7 @@ public class Enemy : Interactable
 
         if(other.gameObject.tag == "RitualActive")
         {
+            nva.isStopped = true;
             Active();
         }
     }
