@@ -117,6 +117,14 @@ public class Enemy : Interactable
             }
             targetSpeed = defaultSpeed;
         }
+        else
+        {
+            if (musicManager.GetCurrentPlaying() != 0)
+            {
+                musicManager.PlayMusic(0);
+            }
+            targetSpeed = defaultSpeed;
+        }
 
         MovingUpandDown();
     }

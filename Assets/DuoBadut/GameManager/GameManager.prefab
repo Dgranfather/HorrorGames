@@ -141,8 +141,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5d79ca30cf57964bb12d2cc808bee42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  music2AudioSource: {fileID: 510836724}
   theAudioClip:
   - {fileID: 8300000, guid: 274de46606705b449b37f28d44fb2be3, type: 3}
+  - {fileID: 8300000, guid: f4b0c95a52f38e744a3201a6e0f9f82d, type: 3}
   onPlay: 0
 --- !u!1 &657139811
 GameObject:
@@ -285,6 +287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec4a398ab6ad5554ab6369db3868c6f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicAudioSource: {fileID: 657139814}
   theAudioClip:
   - {fileID: 8300000, guid: b425cb11286fbf849840d8167d207344, type: 3}
   - {fileID: 8300000, guid: 53ec9051efa249c4daf578b032f204fb, type: 3}
@@ -430,6 +433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d84e3088f71ef6545b53249a361c1248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfxAudioSource: {fileID: 6311051072796585870}
   theAudioClip:
   - {fileID: 8300000, guid: a9116a9d962a7d0418797c18c3e7246e, type: 3}
   - {fileID: 8300000, guid: 4d10fe2b06ec2834aa985a43189f58ee, type: 3}

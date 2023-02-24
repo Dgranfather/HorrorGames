@@ -24,7 +24,7 @@ public class Interact : MonoBehaviour
 
     private IInteractable _iinteractable;
     private bool isGrabbing = false;
-    private bool isHolding = false;
+    public bool isHolding = false;
 
     private Animator anim;
     private Rig theRig;
