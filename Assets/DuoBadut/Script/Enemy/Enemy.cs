@@ -4,6 +4,9 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Animations.Rigging;
+using UnityEngine.Timeline;
+
+[RequireComponent(typeof(SignalReceiver))]
 
 public class Enemy : Interactable
 {
