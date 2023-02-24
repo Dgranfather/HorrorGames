@@ -18,6 +18,7 @@ namespace StarterAssets
 		private Animator anim;
 		[SerializeField] private AudioSource walkingSfx, exhaustedSfx;
 		private bool exhausted = false;
+		[SerializeField] private Settings theSettings;
 
 		[Header("Player")]
 		[Tooltip("Move speed of the character in m/s")]
@@ -133,12 +134,14 @@ namespace StarterAssets
 			//sfx footsteps walking & runing
 			if(_speed > 0 && _speed <= MoveSpeed && Grounded)
 			{
-				walkingSfx.pitch = 0.75f;
+                walkingSfx.volume = theSettings.currentSFXVolume;
+                walkingSfx.pitch = 0.75f;
 				walkingSfx.enabled = true;
 			}
 			else if(_speed > 0 && _speed > MoveSpeed && Grounded)
 			{
-				walkingSfx.pitch = 1.25f;
+                walkingSfx.volume = theSettings.currentSFXVolume;
+                walkingSfx.pitch = 1.25f;
 				walkingSfx.enabled = true;
 			}
 			else
@@ -149,12 +152,12 @@ namespace StarterAssets
 			//sfx exhausted
 			if(exhausted)
 			{
+				exhaustedSfx.volume = theSettings.currentSFXVolume;
 				exhaustedSfx.enabled = true;
 			}
 			else
 			{
 				exhaustedSfx.enabled = false;
-
             }
         }
 

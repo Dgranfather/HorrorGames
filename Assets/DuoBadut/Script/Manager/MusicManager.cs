@@ -10,6 +10,8 @@ public class MusicManager : MonoBehaviour
 
     public int onPlay;
     private float targetVolume;
+
+    [SerializeField] private Settings theSettings;
     void Start()
     {
         //musicAudioSource = GetComponent<AudioSource>();
@@ -69,11 +71,12 @@ public class MusicManager : MonoBehaviour
             }
         }
 
-            musicAudioSource.Stop();
-            musicAudioSource.clip = theAudioClip[musicID];
-            musicAudioSource.Play();
-            targetVolume = 1;
-            musicAudioSource.loop = true;
-            onPlay = musicID;
+        musicAudioSource.Stop();
+        musicAudioSource.clip = theAudioClip[musicID];
+        musicAudioSource.Play();
+        //targetVolume = 1;
+        targetVolume = theSettings.currentMusicVolume;
+        musicAudioSource.loop = true;
+        onPlay = musicID;
     }
 }
