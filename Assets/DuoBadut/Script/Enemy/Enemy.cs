@@ -49,6 +49,12 @@ public class Enemy : Interactable
     private float speedChangeRate = 10f;
 
     [SerializeField] private GameObject _cutsceneToPlay;
+
+    public float viewRadius = 10f;
+    [Range(0, 360)]
+    public float viewAngle = 45f;
+    private bool playerInSight = false;
+
     private void Awake()
     {
         musicManager = FindObjectOfType<MusicManager>();
@@ -81,8 +87,9 @@ public class Enemy : Interactable
             targetSpeed = defaultSpeed;
             targetWeight1 = 0;
             targetWeight4 = 0;
-        }      
-        else if (inSightRange)
+            playerInSight = false;
+        }
+        else if (inSightRange || CanSeePlayer())
         {
             ChasePlayer();
             targetWeight1 = 1;
@@ -94,6 +101,7 @@ public class Enemy : Interactable
                 musicManager.PlayMusic(1);
             }
             targetSpeed = chasingSpeed;
+            playerInSight = true;
         }
         else if (checkingItem && !inSightRange)
         {
@@ -106,6 +114,7 @@ public class Enemy : Interactable
                 musicManager.PlayMusic(0);
             }
             targetSpeed = defaultSpeed;
+            playerInSight = false;
         }
         else if (!inSightRange && !checkingItem)
         { 
@@ -119,14 +128,7 @@ public class Enemy : Interactable
                 musicManager.PlayMusic(0);
             }
             targetSpeed = defaultSpeed;
-        }
-        else
-        {
-            if (musicManager.GetCurrentPlaying() != 0)
-            {
-                musicManager.PlayMusic(0);
-            }
-            targetSpeed = defaultSpeed;
+            playerInSight = false;
         }
 
         MovingUpandDown();
@@ -182,6 +184,22 @@ public class Enemy : Interactable
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
+
+        //another view
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, viewRadius);
+
+        Vector3 leftViewAngle = Quaternion.Euler(0, -viewAngle / 2f, 0) * transform.forward;
+        Vector3 rightViewAngle = Quaternion.Euler(0, viewAngle / 2f, 0) * transform.forward;
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(transform.position, transform.position + leftViewAngle * viewRadius);
+        Gizmos.DrawLine(transform.position, transform.position + rightViewAngle * viewRadius);
+
+        if (playerInSight)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawLine(transform.position, target.position);
+        }
     }
 
     public void warpOnChest()
@@ -295,6 +313,27 @@ public class Enemy : Interactable
         nva.Warp(patrolPos[warpPos].position);
         yield return new WaitForSeconds(stuntTime);
         nva.isStopped = false;
+        Patrol();
+    }
+
+    private bool CanSeePlayer()
+    {
+        if (Vector3.Distance(transform.position, target.position) < viewRadius)
+        {
+            Vector3 directionToTarget = (target.position - transform.position).normalized;
+            if (Vector3.Angle(transform.forward, directionToTarget) < viewAngle / 2f)
+            {
+                return true;
+                //if (Physics.Raycast(transform.position, directionToTarget, out RaycastHit hit, viewRadius))
+                //{
+                //    if (hit.collider.GetComponent<CharacterController>() != null)
+                //    {
+                //        return true;
+                //    }
+                //}
+            }
+        }
+        return false;
     }
 }
 

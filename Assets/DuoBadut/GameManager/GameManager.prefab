@@ -292,6 +292,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b425cb11286fbf849840d8167d207344, type: 3}
   - {fileID: 8300000, guid: 53ec9051efa249c4daf578b032f204fb, type: 3}
   onPlay: 0
+  theSettings: {fileID: 1868434240}
 --- !u!1 &6311051072796585859
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,6 +453,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6311051073077477262}
+  - component: {fileID: 1868434240}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -477,3 +479,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1868434240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6311051073077477249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 021f498b4f921f443b7987eab9127487, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  theTouchpad: {fileID: 0}
+  sensiSlider: {fileID: 0}
+  maxSensi: 10
+  sfxAudio: {fileID: 6311051072796585870}
+  musicAudio1: {fileID: 657139814}
+  musicAudio2: {fileID: 510836724}
+  currentSFXVolume: 1
+  currentMusicVolume: 1
+  SFXSlider: {fileID: 0}
+  musicSlider: {fileID: 0}

@@ -5,6 +5,7 @@ using UnityEngine;
 public class BookExorcism : MonoBehaviour
 {
     [SerializeField] private GameObject bookPanel;
+    [SerializeField] private AutoFlip theAutoFlip;
 
     public void OpenBookPanel()
     {
@@ -13,6 +14,9 @@ public class BookExorcism : MonoBehaviour
 
     public void ClosBookPanel()
     {
-        bookPanel.SetActive(false);
+        if (theAutoFlip.isFlipping == false)
+        {
+            bookPanel.SetActive(false);
+        }
     }
 }

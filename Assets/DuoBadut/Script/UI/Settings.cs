@@ -51,4 +51,18 @@ public class Settings : MonoBehaviour
     {
         QualitySettings.SetQualityLevel(qualityIndex);
     }
+
+    public void SaveSettings()
+    {
+        //currentSensi = sensiSlider.value;
+        //theTouchpad.sensitivity = currentSensi;
+
+        //currentSFXVolume = SFXSlider.value;
+        //currentMusicVolume = musicSlider.value;
+
+        //sfxAudio.volume = currentSFXVolume;
+
+        //musicAudio1.volume = currentMusicVolume;
+        //musicAudio2.volume = currentMusicVolume;
+    }
 }
