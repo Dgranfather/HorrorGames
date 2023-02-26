@@ -9,9 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: PT_Grass_Mat
   m_Shader: {fileID: 4800000, guid: 233be0623027421449b81f7423abaf79, type: 3}
-  m_ValidKeywords:
-  - _CUSTOMWIND_ON
-  - _TRANSLUCENCYONOFF_ON
+  m_ValidKeywords: []
   m_InvalidKeywords:
   - _ALPHAPREMULTIPLY_ON
   - _CUSTOMCOLORSTINTING_ON
@@ -73,15 +71,15 @@ Material:
     - _AlphaCutoff: 0.5
     - _BumpScale: 1
     - _CUSTOMCOLORSTINTING: 1
-    - _CUSTOMWIND: 1
+    - _CUSTOMWIND: 0
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 10
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
-    - _Gradient: 1.4
-    - _GradientPower: 1
+    - _Gradient: 1.5
+    - _GradientPower: 3.5
     - _LeavesThickness: 0.5
     - _MaskClipValue: 0.5
     - _Metallic: 0
@@ -96,7 +94,7 @@ Material:
     - _SnowGradient: 0.83
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _TRANSLUCENCYONOFF: 1
+    - _TRANSLUCENCYONOFF: 0
     - _TransAmbient: 0.2
     - _TransDirect: 1
     - _TransNormal: 0.5
