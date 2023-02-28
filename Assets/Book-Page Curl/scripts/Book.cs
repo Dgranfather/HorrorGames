@@ -145,10 +145,10 @@ public class Book : MonoBehaviour {
             UpdateBook();
         }
 
-        if(currentPage == 0) previousPageBtn.SetActive(false);
+        if(currentPage == 0 || currentPage == 5) previousPageBtn.SetActive(false);
         else previousPageBtn.SetActive(true);
 
-        if (currentPage == 2) nextPageBtn.SetActive(false);
+        if (currentPage == 4) nextPageBtn.SetActive(false);
         else nextPageBtn.SetActive(true);
     }
     public void UpdateBook()

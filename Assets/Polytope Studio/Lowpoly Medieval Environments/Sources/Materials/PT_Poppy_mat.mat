@@ -9,9 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: PT_Poppy_mat
   m_Shader: {fileID: 4800000, guid: 69e2e8c890f00e04e945ccd10e764372, type: 3}
-  m_ValidKeywords:
-  - _CUSTOMWIND_ON
-  - _TRANSLUCENCYONOFF_ON
+  m_ValidKeywords: []
   m_InvalidKeywords:
   - _ALPHAPREMULTIPLY_ON
   m_LightmapFlags: 4
@@ -73,7 +71,7 @@ Material:
     - _BumpScale: 1
     - _CUSTOMCOLORSTINTING: 0
     - _CUSTOMFLOWERSCOLOR: 0
-    - _CUSTOMWIND: 1
+    - _CUSTOMWIND: 0
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 10
@@ -92,7 +90,7 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _TRANSLUCENCYONOFF: 1
+    - _TRANSLUCENCYONOFF: 0
     - _TransAmbient: 0.2
     - _TransDirect: 1
     - _TransNormal: 0.5
