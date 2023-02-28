@@ -19,6 +19,7 @@ public class Settings : MonoBehaviour
     private float volumeMaxValue = 1f;
     [SerializeField] private Slider SFXSlider, musicSlider;
 
+    [SerializeField] private GameObject grassGarden, treeGarden, bushGarden;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +51,19 @@ public class Settings : MonoBehaviour
     public void SetGraphics(int qualityIndex)
     {
         QualitySettings.SetQualityLevel(qualityIndex);
+        Debug.Log("quality index = " + qualityIndex);
+        if (qualityIndex == 3)
+        {
+            grassGarden.SetActive(true);
+            treeGarden.SetActive(true);
+            bushGarden.SetActive(true);
+        }
+        else
+        {
+            grassGarden.SetActive(false);
+            treeGarden.SetActive(false);
+            bushGarden.SetActive(false);
+        }
     }
 
     public void SaveSettings()
