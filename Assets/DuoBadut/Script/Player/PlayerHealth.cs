@@ -13,6 +13,7 @@ public class PlayerHealth : Interactable
     private bool onInvulnerable;
 
     [SerializeField] private GameObject _cutsceneToPlay;
+    [SerializeField] private GameObject gameOverPanel;
     void Start()
     {
         currentHealth = startingHealth;
@@ -39,7 +40,7 @@ public class PlayerHealth : Interactable
     {
         if (other.gameObject.tag == "Enemy")
         {
-            if (!theEnemy.cursing)
+            if (!theEnemy.cursing && !theEnemy.onDazzled)
             {
                 if (onInvulnerable == false)
                 {
@@ -48,7 +49,8 @@ public class PlayerHealth : Interactable
                     StartCoroutine(theEnemy.WarpandStunt(invulnerableTime));
                     if (currentHealth <= 0)
                     {
-                        Debug.Log("dead");
+                        StartCoroutine(GameOver());
+
                         // player is dead
                         // you can add code here to handle the death of the player
                         // for example, you can load a game over scene or restart the level
@@ -83,6 +85,13 @@ public class PlayerHealth : Interactable
         PlayerControler.Instance.CutsceneCamera.SetActive(false);
         //PlayerControler.Instance.CutscenePlayerCamera.SetActive(false);
         PlayerControler.Instance.FirstPersonCamera.SetActive(true);
+    }
+
+    IEnumerator GameOver()
+    {
+        yield return new WaitForSeconds(2f);
+        gameOverPanel.SetActive(true);
+        Time.timeScale = 0;
     }
 
     //private void OnControllerColliderHit(ControllerColliderHit hit)

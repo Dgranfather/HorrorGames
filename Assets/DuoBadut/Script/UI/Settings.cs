@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Settings : MonoBehaviour
 {
@@ -20,6 +22,11 @@ public class Settings : MonoBehaviour
     [SerializeField] private Slider SFXSlider, musicSlider;
 
     [SerializeField] private GameObject grassGarden, treeGarden, bushGarden;
+
+    //laoding scene
+    public GameObject loadingLayer;
+    public Slider slider;
+    public TextMeshProUGUI progressText;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,8 +58,14 @@ public class Settings : MonoBehaviour
     public void SetGraphics(int qualityIndex)
     {
         QualitySettings.SetQualityLevel(qualityIndex);
-        Debug.Log("quality index = " + qualityIndex);
-        if (qualityIndex == 3)
+
+        if (qualityIndex == 2)
+        {
+            grassGarden.SetActive(false);
+            treeGarden.SetActive(true);
+            bushGarden.SetActive(false);
+        }
+        else if(qualityIndex == 3)
         {
             grassGarden.SetActive(true);
             treeGarden.SetActive(true);
@@ -64,6 +77,19 @@ public class Settings : MonoBehaviour
             treeGarden.SetActive(false);
             bushGarden.SetActive(false);
         }
+
+        //if (qualityIndex == 3)
+        //{
+        //    grassGarden.SetActive(true);
+        //    treeGarden.SetActive(true);
+        //    bushGarden.SetActive(true);
+        //}
+        //else
+        //{
+        //    grassGarden.SetActive(false);
+        //    treeGarden.SetActive(false);
+        //    bushGarden.SetActive(false);
+        //}
     }
 
     public void SaveSettings()
@@ -78,5 +104,32 @@ public class Settings : MonoBehaviour
 
         //musicAudio1.volume = currentMusicVolume;
         //musicAudio2.volume = currentMusicVolume;
+    }
+
+    IEnumerator GameLoader(int sceneIndex)
+    {
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
+
+        loadingLayer.SetActive(true);
+
+        while (!operation.isDone)
+        {
+            float progressValue = Mathf.Clamp01(operation.progress / 0.9f);
+
+            slider.value = progressValue;
+            progressText.text = progressValue * 100f + "%";
+
+            yield return null;
+        }
+
+        if (operation.isDone)
+        {
+            loadingLayer.SetActive(false);
+        }
+    }
+
+    public void ExitGameOver(int sceneIndex)
+    {
+        StartCoroutine(GameLoader(sceneIndex));
     }
 }

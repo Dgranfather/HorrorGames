@@ -55,6 +55,7 @@ public class Enemy : Interactable
     public float viewAngle = 45f;
     private bool playerInSight = false;
 
+    [SerializeField] private GameObject postGamePanel;
     private void Awake()
     {
         musicManager = FindObjectOfType<MusicManager>();
@@ -334,6 +335,13 @@ public class Enemy : Interactable
             }
         }
         return false;
+    }
+
+    IEnumerator WinPostGame()
+    {
+        yield return new WaitForSeconds(12.5f);
+        postGamePanel.SetActive(true);
+        Time.timeScale = 0;
     }
 }
 
