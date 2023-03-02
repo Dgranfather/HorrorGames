@@ -10,7 +10,7 @@ LightingSettings:
   serializedVersion: 4
   m_GIWorkflowMode: 1
   m_EnableBakedLightmaps: 1
-  m_EnableRealtimeLightmaps: 0
+  m_EnableRealtimeLightmaps: 1
   m_RealtimeEnvironmentLighting: 1
   m_BounceScale: 1
   m_AlbedoBoost: 1
@@ -40,7 +40,7 @@ LightingSettings:
   m_FinalGatherFiltering: 1
   m_PVRCulling: 0
   m_PVRSampling: 1
-  m_PVRDirectSampleCount: 100
+  m_PVRDirectSampleCount: 4
   m_PVRSampleCount: 200
   m_PVREnvironmentSampleCount: 300
   m_PVREnvironmentReferencePointCount: 2048

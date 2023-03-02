@@ -108,7 +108,7 @@ Material:
     - _WINDMASKONOFF: 0
     - _WindDensity: 0.5
     - _WindMovement: 1
-    - _WindStrength: 0.1
+    - _WindStrength: 0.5
     - _ZWrite: 0
     - __dirty: 0
     m_Colors:

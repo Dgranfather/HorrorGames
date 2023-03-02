@@ -13,7 +13,7 @@ public class Settings : MonoBehaviour
     [SerializeField] private Slider sensiSlider;
     [SerializeField] private float maxSensi;
     private float currentSensi = 1f;
-
+ 
     //sfx & music volume
     [SerializeField] private AudioSource sfxAudio, musicAudio1, musicAudio2;
     public float currentSFXVolume = 1f;
@@ -21,7 +21,7 @@ public class Settings : MonoBehaviour
     private float volumeMaxValue = 1f;
     [SerializeField] private Slider SFXSlider, musicSlider;
 
-    [SerializeField] private GameObject grassGarden, treeGarden, bushGarden;
+    [SerializeField] private GameObject terrainGarden;
 
     //laoding scene
     public GameObject loadingLayer;
@@ -38,6 +38,7 @@ public class Settings : MonoBehaviour
 
         SFXSlider.value = currentSFXVolume;
         musicSlider.value = currentMusicVolume;
+
     }
 
     // Update is called once per frame
@@ -59,37 +60,14 @@ public class Settings : MonoBehaviour
     {
         QualitySettings.SetQualityLevel(qualityIndex);
 
-        if (qualityIndex == 2)
+        if (qualityIndex == 1 || qualityIndex == 2)
         {
-            grassGarden.SetActive(false);
-            treeGarden.SetActive(true);
-            bushGarden.SetActive(false);
-        }
-        else if(qualityIndex == 3)
-        {
-            grassGarden.SetActive(true);
-            treeGarden.SetActive(true);
-            bushGarden.SetActive(true);
+            terrainGarden.SetActive(true);
         }
         else
         {
-            grassGarden.SetActive(false);
-            treeGarden.SetActive(false);
-            bushGarden.SetActive(false);
+            terrainGarden.SetActive(false);
         }
-
-        //if (qualityIndex == 3)
-        //{
-        //    grassGarden.SetActive(true);
-        //    treeGarden.SetActive(true);
-        //    bushGarden.SetActive(true);
-        //}
-        //else
-        //{
-        //    grassGarden.SetActive(false);
-        //    treeGarden.SetActive(false);
-        //    bushGarden.SetActive(false);
-        //}
     }
 
     public void SaveSettings()

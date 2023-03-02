@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3379145751292695253}
   - component: {fileID: 8415500629135939054}
   - component: {fileID: 3247357448750732809}
+  - component: {fileID: 4279611711587510709}
   m_Layer: 0
   m_Name: PT_Fruit_Tree_01_pears_LOD0
   m_TagString: Untagged
@@ -94,11 +95,25 @@ MeshCollider:
   m_GameObject: {fileID: 3186936353867649492}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -81730470629741159, guid: ab5654911e4a8494190af9551d81ea81, type: 3}
+--- !u!136 &4279611711587510709
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3186936353867649492}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.47
+  m_Height: 6.575604
+  m_Direction: 1
+  m_Center: {x: -0.05178237, y: 2.85, z: -0.07}
 --- !u!1 &4038288260421782749
 GameObject:
   m_ObjectHideFlags: 0
@@ -111,6 +126,7 @@ GameObject:
   - component: {fileID: 699634466461446594}
   - component: {fileID: 7736460117406664005}
   - component: {fileID: 445994106971918935}
+  - component: {fileID: 937021572569211891}
   m_Layer: 0
   m_Name: PT_Fruit_Tree_01_pears_LOD2
   m_TagString: Untagged
@@ -193,11 +209,25 @@ MeshCollider:
   m_GameObject: {fileID: 4038288260421782749}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 5722038721443508255, guid: ab5654911e4a8494190af9551d81ea81, type: 3}
+--- !u!136 &937021572569211891
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4038288260421782749}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.47
+  m_Height: 6.874275
+  m_Direction: 1
+  m_Center: {x: -0.053788304, y: 2.85, z: -0.07}
 --- !u!1 &4479373333862468082
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,6 +302,7 @@ GameObject:
   - component: {fileID: 2035367782612994488}
   - component: {fileID: 4389167491187250897}
   - component: {fileID: 7316303128930403699}
+  - component: {fileID: 8233040715808975805}
   m_Layer: 0
   m_Name: PT_Fruit_Tree_01_pears_LOD1
   m_TagString: Untagged
@@ -354,8 +385,22 @@ MeshCollider:
   m_GameObject: {fileID: 8614760765642589681}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1599781597726719241, guid: ab5654911e4a8494190af9551d81ea81, type: 3}
+--- !u!136 &8233040715808975805
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8614760765642589681}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.47
+  m_Height: 6.7216554
+  m_Direction: 1
+  m_Center: {x: -0.05276704, y: 2.85, z: -0.07}
