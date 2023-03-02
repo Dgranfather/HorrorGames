@@ -38,7 +38,6 @@ public class Settings : MonoBehaviour
 
         SFXSlider.value = currentSFXVolume;
         musicSlider.value = currentMusicVolume;
-
     }
 
     // Update is called once per frame
@@ -68,20 +67,6 @@ public class Settings : MonoBehaviour
         {
             terrainGarden.SetActive(false);
         }
-    }
-
-    public void SaveSettings()
-    {
-        //currentSensi = sensiSlider.value;
-        //theTouchpad.sensitivity = currentSensi;
-
-        //currentSFXVolume = SFXSlider.value;
-        //currentMusicVolume = musicSlider.value;
-
-        //sfxAudio.volume = currentSFXVolume;
-
-        //musicAudio1.volume = currentMusicVolume;
-        //musicAudio2.volume = currentMusicVolume;
     }
 
     IEnumerator GameLoader(int sceneIndex)

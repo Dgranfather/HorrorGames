@@ -20,22 +20,6 @@ public class PlayerHealth : Interactable
         theEnemy = FindObjectOfType<Enemy>();
     }
 
-    //void OnCollisionEnter(Collision collision)
-    //{
-    //    if (collision.gameObject.tag == "Enemy")
-    //    {
-    //        Debug.Log("take damage");
-    //        currentHealth--;
-    //        if (currentHealth <= 0)
-    //        {
-    //            Debug.Log("dead");
-    //            // player is dead
-    //            // you can add code here to handle the death of the player
-    //            // for example, you can load a game over scene or restart the level
-    //        }
-    //    }
-    //}
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Enemy")
@@ -90,8 +74,9 @@ public class PlayerHealth : Interactable
     IEnumerator GameOver()
     {
         yield return new WaitForSeconds(2f);
+        theEnemy.StopMoving();
         gameOverPanel.SetActive(true);
-        Time.timeScale = 0;
+        AdsManager.instance.ShowInterstitial();
     }
 
     //private void OnControllerColliderHit(ControllerColliderHit hit)

@@ -343,5 +343,10 @@ public class Enemy : Interactable
         postGamePanel.SetActive(true);
         Time.timeScale = 0;
     }
+
+    public void StopMoving()
+    {
+        nva.isStopped = true;
+    }
 }
 
