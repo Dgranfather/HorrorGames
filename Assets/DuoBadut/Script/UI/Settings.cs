@@ -66,8 +66,8 @@ public class Settings : MonoBehaviour
         }
         else
         {
-            terrainGarden.SetActive(false);
             groundGarden.SetActive(true);
+            terrainGarden.SetActive(false);
         }
     }
 
