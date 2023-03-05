@@ -242,11 +242,6 @@ public class Enemy : Interactable
                     if (theDolls.isBlessed)
                     {
                         StartCoroutine(CursingDoll());
-                        if(dollPanel == false)
-                        {
-                            dollPanel = true;
-                            Instantiate(ritualPanel, transform.position, Quaternion.identity);
-                        }
                     }
                 }
             }
@@ -289,6 +284,11 @@ public class Enemy : Interactable
         nva.isStopped = false;
         music2Manager.StopMusic2();
         checkingItem = false;
+        if (dollPanel == false)
+        {
+            dollPanel = true;
+            Instantiate(ritualPanel, transform.position, Quaternion.identity);
+        }
     }
 
     public void CheckDroppedItem(Transform dropPos)

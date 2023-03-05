@@ -21,7 +21,7 @@ public class Settings : MonoBehaviour
     private float volumeMaxValue = 1f;
     [SerializeField] private Slider SFXSlider, musicSlider;
 
-    [SerializeField] private GameObject terrainGarden;
+    [SerializeField] private GameObject terrainGarden, groundGarden;
 
     //laoding scene
     public GameObject loadingLayer;
@@ -62,10 +62,12 @@ public class Settings : MonoBehaviour
         if (qualityIndex == 0 || qualityIndex == 2)
         {
             terrainGarden.SetActive(true);
+            groundGarden.SetActive(false); ;
         }
         else
         {
             terrainGarden.SetActive(false);
+            groundGarden.SetActive(true);
         }
     }
 
