@@ -11,30 +11,44 @@ public class Story : MonoBehaviour
     public string[] sentences;
     private int index;
     public float typingSpeed;
-    public GameObject loadingLayer;
-    public Slider slider;
-    public Text progressText;
+    public float delayBeforeStart = 1f;
+    public float delayStart = 7.35f;
+
+    //public GameObject loadingLayer;
+    // public Slider slider;
+    //public Text progressText;
 
 
     //public Animator transition;
     //public float transisitionTime = 1f;
 
-    public GameObject continueButton;
+    //public GameObject continueButton;
 
+    private bool isNext = false;
     void Start()
     {
-        StartCoroutine(Type());
+        StartCoroutine(StartDelay());
+        //StartCoroutine(Type());
+
     }
 
     void Update()
     {
         if (textDisplay.text != sentences[index])
         {
-            continueButton.SetActive(false);
+            
+            //NextSentences();
+            //continueButton.SetActive(false);
         }
         else if (textDisplay.text == sentences[index])
         {
-            continueButton.SetActive(true);
+
+            //continueButton.SetActive(true);
+            if(!isNext)
+            StartCoroutine(Wait());
+            //NextSentences();
+           
+            
         }
     }
 
@@ -47,9 +61,24 @@ public class Story : MonoBehaviour
         }
     }
 
+    IEnumerator Wait()
+    {
+        isNext = true;
+        yield return new WaitForSeconds(delayBeforeStart);
+        NextSentences();
+        isNext = false;
+    }
+
+    IEnumerator StartDelay()
+    {
+        yield return new WaitForSeconds(delayStart);
+        StartCoroutine(Type());
+    }
+
     public void NextSentences()
     {
-        continueButton.SetActive(false);
+        
+        //continueButton.SetActive(false);
         if (index < sentences.Length - 1)
         {
             index++;
@@ -58,16 +87,17 @@ public class Story : MonoBehaviour
         }
         else
         {
-            LoadingLevel();
-            continueButton.SetActive(false);
+            //StartCoroutine(Wait());
+            //LoadingLevel();
+            //continueButton.SetActive(false);
         }
     }
 
 
-    public void LoadingLevel()
-    {
-        StartCoroutine(loadingScene(1));
-    }
+    //public void LoadingLevel()
+    //{
+    //    StartCoroutine(loadingScene(1));
+    //}
 
     //IEnumerator LoadLevel(int levelIndex)
     //{
@@ -76,25 +106,25 @@ public class Story : MonoBehaviour
     //    SceneManager.LoadScene(levelIndex);
     //}
 
-    IEnumerator loadingScene(int sceneIndex)
-    {
-        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
+    //IEnumerator loadingScene(int sceneIndex)
+    //{
+    //    AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
 
-        loadingLayer.SetActive(true);
+    //    loadingLayer.SetActive(true);
 
-        while (!operation.isDone)
-        {
-            float progressValue = Mathf.Clamp01(operation.progress / 0.9f);
+    //    while (!operation.isDone)
+    //    {
+    //        float progressValue = Mathf.Clamp01(operation.progress / 0.9f);
 
-            slider.value = progressValue;
-            progressText.text = progressValue * 100f + "%";
+    //        slider.value = progressValue;
+    //        progressText.text = progressValue * 100f + "%";
 
-            yield return null;
-        }
+    //        yield return null;
+    //    }
 
-        if (operation.isDone)
-        {
-            loadingLayer.SetActive(false);
-        }
-    }
+    //    if (operation.isDone)
+    //    {
+    //        loadingLayer.SetActive(false);
+    //    }
+    //}
 }
