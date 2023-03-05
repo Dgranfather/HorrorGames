@@ -45,4 +45,9 @@ public class CameraUpDown : MonoBehaviour
         currentY = startY + Mathf.Sin(Time.time * frequency) * amplitude;
         transform.position = new Vector3(transform.position.x, currentY, transform.position.z);
     }
+
+    public void ResetCamPos()
+    {
+        transform.position = new Vector3(transform.position.x, startY, transform.position.z);
+    }
 }

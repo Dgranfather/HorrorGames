@@ -17,6 +17,7 @@ public class Chest : MonoBehaviour, IInteractable
     private Collider theCollider;
 
     private Enemy theEnemy;
+    public int chestNumber;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +36,14 @@ public class Chest : MonoBehaviour, IInteractable
             theCollider.enabled = false;
             if(isTrap == true)
             {
-                theEnemy.warpOnChest();
+                if (chestNumber == 1)
+                {
+                    theEnemy.warpOnChest();
+                }
+                else if(chestNumber == 3)
+                {
+                    theEnemy.warpOnChest2();
+                }
             }
         }
         else

@@ -22,7 +22,7 @@ public class Enemy : Interactable
     private bool inSightRange;
     private int iPos;
 
-    [SerializeField] private Transform chestGhostPos;
+    [SerializeField] private Transform chestGhostPos, chestGhostPos2;
 
     private Dolls theDolls;
     [SerializeField] private float stunnedTime;
@@ -56,6 +56,9 @@ public class Enemy : Interactable
     private bool playerInSight = false;
 
     [SerializeField] private GameObject postGamePanel;
+
+    private bool dollPanel = false;
+    [SerializeField] private GameObject ritualPanel;
     private void Awake()
     {
         musicManager = FindObjectOfType<MusicManager>();
@@ -208,6 +211,18 @@ public class Enemy : Interactable
         StartCoroutine(Warping());
     }
 
+    public void warpOnChest2()
+    {
+        StartCoroutine(Warping2());
+    }
+    IEnumerator Warping2()
+    {
+        nva.isStopped = true;
+        nva.Warp(chestGhostPos2.position);
+        yield return new WaitForSeconds(1f);
+        nva.isStopped = false;
+    }
+
     IEnumerator Warping()
     {
         nva.isStopped = true;
@@ -227,6 +242,11 @@ public class Enemy : Interactable
                     if (theDolls.isBlessed)
                     {
                         StartCoroutine(CursingDoll());
+                        if(dollPanel == false)
+                        {
+                            dollPanel = true;
+                            Instantiate(ritualPanel, transform.position, Quaternion.identity);
+                        }
                     }
                 }
             }
