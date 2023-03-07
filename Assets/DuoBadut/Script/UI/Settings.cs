@@ -62,7 +62,7 @@ public class Settings : MonoBehaviour
         if (qualityIndex == 0 || qualityIndex == 2)
         {
             terrainGarden.SetActive(true);
-            groundGarden.SetActive(false); ;
+            groundGarden.SetActive(false);
         }
         else
         {

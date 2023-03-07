@@ -106,6 +106,7 @@ public class Enemy : Interactable
             }
             targetSpeed = chasingSpeed;
             playerInSight = true;
+            walkPointSet = false;
         }
         else if (checkingItem && !inSightRange)
         {
