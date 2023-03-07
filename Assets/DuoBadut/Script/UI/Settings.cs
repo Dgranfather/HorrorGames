@@ -97,4 +97,9 @@ public class Settings : MonoBehaviour
     {
         StartCoroutine(GameLoader(sceneIndex));
     }
+
+    public void LoadScene(int sceneIndex)
+    {
+        StartCoroutine(GameLoader(sceneIndex));
+    }
 }

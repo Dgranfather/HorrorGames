@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ChoosingGhost : MonoBehaviour
 {
     [SerializeField] private GameObject[] ghost;
-    private int ghostID = 0;
+    public int ghostID = 0;
     // Start is called before the first frame update
     void Start()
     {

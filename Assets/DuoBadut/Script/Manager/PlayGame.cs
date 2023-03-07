@@ -12,15 +12,15 @@ public class PlayGame : MonoBehaviour
     public Slider slider;
     public TextMeshProUGUI progressText;
 
-    void Start()
-    {
-        
-    }
+    private int ghostID;
+    [SerializeField] private ChoosingGhost theChoosingGhost;
+    [SerializeField] private GameObject notif;
+    private bool isActive = false;
 
-    
-    void Update()
+    private void Start()
     {
-        
+        isActive = false;
+        ghostID = 0;
     }
 
     IEnumerator GameLoader(int sceneIndex)
@@ -45,8 +45,63 @@ public class PlayGame : MonoBehaviour
         }
     }
 
-    public void PlayGameNew(int sceneIndex)
+    public void EasyGhost()
     {
-        StartCoroutine(GameLoader(sceneIndex));
+        ghostID = theChoosingGhost.ghostID;
+
+        if (ghostID == 0)
+        {
+            StartCoroutine(GameLoader(1));
+        }
+        else
+        {
+            if(isActive == false)
+            {
+                StartCoroutine(NotifActive());
+            }
+        }
+    }
+
+    public void MediumGhost()
+    {
+        ghostID = theChoosingGhost.ghostID;
+
+        if (ghostID == 0)
+        {
+            StartCoroutine(GameLoader(0));
+        }
+        else
+        {
+            if (isActive == false)
+            {
+                StartCoroutine(NotifActive());
+            }
+        }
+    }
+
+    public void ExtremeGhost()
+    {
+        ghostID = theChoosingGhost.ghostID;
+
+        if (ghostID == 0)
+        {
+            StartCoroutine(GameLoader(0));
+        }
+        else
+        {
+            if (isActive == false)
+            {
+                StartCoroutine(NotifActive());
+            }
+        }
+    }
+
+    IEnumerator NotifActive()
+    {
+        isActive = true;
+        notif.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        notif.SetActive(false);
+        isActive = false;
     }
 }

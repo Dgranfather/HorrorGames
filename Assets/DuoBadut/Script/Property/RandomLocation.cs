@@ -7,7 +7,7 @@ public class RandomLocation : MonoBehaviour
     public GameObject[] objects;
     public Transform[] locations;
 
-    private void Start()
+    private void Awake()
     {
         // Place each object at a random location
         foreach (GameObject obj in objects)
@@ -18,6 +18,19 @@ public class RandomLocation : MonoBehaviour
             //obj.transform.rotation = obj.transform.rotation;
             //obj.transform.rotation = randomLocation.rotation;
         }
+    }
+
+    private void Start()
+    {
+        //// Place each object at a random location
+        //foreach (GameObject obj in objects)
+        //{
+        //    Transform randomLocation = GetRandomLocation();
+        //    obj.transform.position = randomLocation.position;
+        //    obj.transform.rotation = Quaternion.identity;
+        //    //obj.transform.rotation = obj.transform.rotation;
+        //    //obj.transform.rotation = randomLocation.rotation;
+        //}
     }
 
     private Transform GetRandomLocation()

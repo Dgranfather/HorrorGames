@@ -19,6 +19,12 @@ public class StaminaPlayer : MonoBehaviour
     {
         theFPC = FindObjectOfType<FirstPersonController>();
 
+
+        if (PlayerPrefs.GetInt("buff2") == 1)
+        {
+            maxStamina += 50f;
+            PlayerPrefs.SetInt("buff2", 0);
+        }
         currentStamina = maxStamina;
         staminaBar.maxValue = maxStamina;
     }

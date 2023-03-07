@@ -5,6 +5,7 @@ using UnityEngine;
 public class SetinggsButton : MonoBehaviour
 {
     [SerializeField] private GameObject SettingsPanel;
+    [SerializeField] private GameObject ConfirmationLobby;
     
     public void OpenSettings()
     {
@@ -14,5 +15,15 @@ public class SetinggsButton : MonoBehaviour
     public void CloseSettings()
     {
         SettingsPanel.SetActive(false);
+    }
+
+    public void ConfirmationToLobby()
+    {
+        ConfirmationLobby.SetActive(true);
+    }
+
+    public void CloseConfirmation()
+    {
+        ConfirmationLobby.SetActive(false);
     }
 }

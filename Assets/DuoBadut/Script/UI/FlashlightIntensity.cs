@@ -25,8 +25,15 @@ public class FlashlightIntensity : MonoBehaviour
     private Enemy theEnemy;
     private float currentHitTime = 0f;
     [SerializeField] private float rayDuration;
+
     private void Start()
     {
+        if(PlayerPrefs.GetInt("buff1") == 1)
+        {
+            maxBatery += 50f;
+            PlayerPrefs.SetInt("buff1", 0);
+        }
+
         flashlightSlider.maxValue = maxIntensity;
         flashlightSlider.value = 0;
 
