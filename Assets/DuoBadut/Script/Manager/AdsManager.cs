@@ -16,6 +16,7 @@ public class AdsManager : MonoBehaviour
 
     private BannerView bannerView;
     private InterstitialAd interstitial;
+    private RewardedAd rewardedAd;
 
     public static AdsManager instance;
 
@@ -39,12 +40,7 @@ public class AdsManager : MonoBehaviour
         //RequestBanner();
         //ShowAdBanner();
         RequestInterstitial();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        LoadRewardedAd();
     }
 
     public void RequestBanner()
@@ -107,5 +103,70 @@ public class AdsManager : MonoBehaviour
         MonoBehaviour.print("HandleAdClosed event received");
     }
 
+    public void LoadRewardedAd()
+    {
+        // Clean up the old ad before loading a new one.
+        if (rewardedAd != null)
+        {
+            rewardedAd.Destroy();
+            rewardedAd = null;
+        }
 
+        Debug.Log("Loading the rewarded ad.");
+
+        // create our request used to load the ad.
+        var adRequest = new AdRequest.Builder().Build();
+
+        // send the request to load the ad.
+        RewardedAd.Load(rewarded_Ad_ID, adRequest,
+            (RewardedAd ad, LoadAdError error) =>
+            {
+                // if error is not null, the load request failed.
+                if (error != null || ad == null)
+                {
+                    Debug.LogError("Rewarded ad failed to load an ad " +
+                                   "with error : " + error);
+                    return;
+                }
+
+                Debug.Log("Rewarded ad loaded with response : "
+                          + ad.GetResponseInfo());
+
+                rewardedAd = ad;
+            });
+    }
+
+    public void ShowRewardedAd()
+    {
+        const string rewardMsg =
+            "Rewarded ad rewarded the user. Type: {0}, amount: {1}.";
+
+        if (rewardedAd != null && rewardedAd.CanShowAd())
+        {
+            rewardedAd.Show((Reward reward) =>
+            {
+                // TODO: Reward the user.
+                Debug.Log(String.Format(rewardMsg, reward.Type, reward.Amount));
+            });
+            RegisterEventHandlers(rewardedAd);
+        }
+    }
+
+    private void RegisterEventHandlers(RewardedAd ad)
+    {
+        // Raised when the ad closed full screen content.
+        ad.OnAdFullScreenContentClosed += () =>
+        {
+            Debug.Log("Rewarded ad full screen content closed.");
+            rewardedAd.Destroy();
+            LoadRewardedAd();
+        };
+        // Raised when the ad failed to open full screen content.
+        ad.OnAdFullScreenContentFailed += (AdError error) =>
+        {
+            Debug.LogError("Rewarded ad failed to open full screen content " +
+                           "with error : " + error);
+            LoadRewardedAd();
+        };
+    }
 }
