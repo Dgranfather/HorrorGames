@@ -25,9 +25,10 @@ public class PlayGame : MonoBehaviour
 
     IEnumerator GameLoader(int sceneIndex)
     {
-        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
-
         loadingLayer.SetActive(true);
+        yield return null;
+
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
 
         while (!operation.isDone)
         {
@@ -45,51 +46,17 @@ public class PlayGame : MonoBehaviour
         }
     }
 
-    public void EasyGhost()
+    public void PlayNewGame(int levelIndex)
     {
         ghostID = theChoosingGhost.ghostID;
 
         if (ghostID == 0)
         {
-            StartCoroutine(GameLoader(1));
+            StartCoroutine(GameLoader(levelIndex));
         }
         else
         {
             if(isActive == false)
-            {
-                StartCoroutine(NotifActive());
-            }
-        }
-    }
-
-    public void MediumGhost()
-    {
-        ghostID = theChoosingGhost.ghostID;
-
-        if (ghostID == 0)
-        {
-            StartCoroutine(GameLoader(0));
-        }
-        else
-        {
-            if (isActive == false)
-            {
-                StartCoroutine(NotifActive());
-            }
-        }
-    }
-
-    public void ExtremeGhost()
-    {
-        ghostID = theChoosingGhost.ghostID;
-
-        if (ghostID == 0)
-        {
-            StartCoroutine(GameLoader(0));
-        }
-        else
-        {
-            if (isActive == false)
             {
                 StartCoroutine(NotifActive());
             }

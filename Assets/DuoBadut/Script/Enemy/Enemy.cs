@@ -55,8 +55,6 @@ public class Enemy : Interactable
     public float viewAngle = 45f;
     private bool playerInSight = false;
 
-    [SerializeField] private GameObject postGamePanel;
-
     private bool dollPanel = false;
     [SerializeField] private GameObject ritualPanel;
 
@@ -369,16 +367,12 @@ public class Enemy : Interactable
         return false;
     }
 
-    IEnumerator WinPostGame()
-    {
-        yield return new WaitForSeconds(12.5f);
-        postGamePanel.SetActive(true);
-        Time.timeScale = 0;
-    }
-
     public void StopMoving()
     {
         nva.isStopped = true;
+        nva.speed = 0;
+        chasingSpeed = 0;
+        isEnd = true;
     }
 }
 

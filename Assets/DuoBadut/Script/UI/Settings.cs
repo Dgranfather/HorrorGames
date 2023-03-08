@@ -73,9 +73,10 @@ public class Settings : MonoBehaviour
 
     IEnumerator GameLoader(int sceneIndex)
     {
-        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
-
         loadingLayer.SetActive(true);
+        yield return null;
+
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
 
         while (!operation.isDone)
         {
