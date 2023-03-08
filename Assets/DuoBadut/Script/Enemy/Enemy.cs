@@ -59,6 +59,8 @@ public class Enemy : Interactable
 
     private bool dollPanel = false;
     [SerializeField] private GameObject ritualPanel;
+
+    private bool isEnd = false;
     private void Awake()
     {
         musicManager = FindObjectOfType<MusicManager>();
@@ -78,6 +80,7 @@ public class Enemy : Interactable
         musicManager.PlayMusic(0);
         defaultSpeed = nva.speed;
         targetSpeed = nva.speed;
+        isEnd = false;
     }
 
     private void Update()
@@ -85,7 +88,11 @@ public class Enemy : Interactable
         //check for sight
         inSightRange = Physics.CheckSphere(transform.position, sightRange, Player);
 
-        if (cursing || onDazzled)
+        if(isEnd)
+        {
+            musicManager.PlayMusic(0);
+        }
+        else if (cursing || onDazzled)
         {
             musicManager.PlayMusic(0);
             targetSpeed = defaultSpeed;
@@ -242,7 +249,10 @@ public class Enemy : Interactable
                 {
                     if (theDolls.isBlessed)
                     {
-                        StartCoroutine(CursingDoll());
+                        if (onDazzled == false)
+                        {
+                            StartCoroutine(CursingDoll());
+                        }
                     }
                 }
             }
@@ -250,6 +260,7 @@ public class Enemy : Interactable
 
         if(other.gameObject.tag == "RitualActive")
         {
+            isEnd = true;
             nva.isStopped = true;
             Active();
         }
