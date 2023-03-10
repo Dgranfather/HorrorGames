@@ -31,13 +31,36 @@ public class Settings : MonoBehaviour
     void Start()
     {
         sensiSlider.maxValue = maxSensi;
-        sensiSlider.value = currentSensi;
+
+        if (PlayerPrefs.GetFloat("playerSensi") != 0f)
+        {
+            sensiSlider.value = PlayerPrefs.GetFloat("playerSensi");
+        }
+        else
+        {
+            sensiSlider.value = currentSensi;
+        }
 
         SFXSlider.maxValue = volumeMaxValue;
         musicSlider.maxValue = volumeMaxValue;
 
-        SFXSlider.value = currentSFXVolume;
-        musicSlider.value = currentMusicVolume;
+        if (PlayerPrefs.GetFloat("playerSfx") != 0)
+        {
+            SFXSlider.value = PlayerPrefs.GetFloat("playerSfx");
+        }
+        else
+        {
+            SFXSlider.value = currentSFXVolume;
+        }
+
+        if (PlayerPrefs.GetFloat("playerMusic") != 0)
+        {
+            musicSlider.value = PlayerPrefs.GetFloat("playerMusic");
+        }
+        else
+        {
+            musicSlider.value = currentMusicVolume;
+        }
     }
 
     // Update is called once per frame
@@ -45,9 +68,13 @@ public class Settings : MonoBehaviour
     {
         currentSensi = sensiSlider.value;
         theTouchpad.sensitivity = currentSensi;
+        PlayerPrefs.SetFloat("playerSensi", currentSensi);
 
         currentSFXVolume = SFXSlider.value;
         currentMusicVolume = musicSlider.value;
+
+        PlayerPrefs.SetFloat("playerSfx", currentSFXVolume);
+        PlayerPrefs.SetFloat("playerMusic", currentMusicVolume);
 
         sfxAudio.volume = currentSFXVolume;
 

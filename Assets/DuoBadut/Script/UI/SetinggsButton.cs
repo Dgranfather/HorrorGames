@@ -10,11 +10,13 @@ public class SetinggsButton : MonoBehaviour
     public void OpenSettings()
     {
         SettingsPanel.SetActive(true);
+        Time.timeScale = 0f;
     }
 
     public void CloseSettings()
     {
         SettingsPanel.SetActive(false);
+        Time.timeScale = 1f;
     }
 
     public void ConfirmationToLobby()

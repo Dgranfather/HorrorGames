@@ -26,6 +26,9 @@ public class FlashlightIntensity : MonoBehaviour
     private float currentHitTime = 0f;
     [SerializeField] private float rayDuration;
 
+    private bool isActive = false;
+    [SerializeField] private GameObject onImg, offImg;
+
     private void Start()
     {
         if(PlayerPrefs.GetInt("buff1") == 1)
@@ -54,6 +57,9 @@ public class FlashlightIntensity : MonoBehaviour
         {
             if(currentBatery > 0)
             {
+                isActive = true;
+                onImg.SetActive(true);
+                offImg.SetActive(false);
                 currentBatery -= dValue * Time.deltaTime;
                 baterySlider.value = currentBatery;
                 fill.color = gradient.Evaluate(baterySlider.normalizedValue);
@@ -99,6 +105,9 @@ public class FlashlightIntensity : MonoBehaviour
         else
         {
             currentHitTime = rayDuration;
+            isActive = false;
+            offImg.SetActive(true);
+            onImg.SetActive(false);
         }
     }
 
@@ -116,5 +125,21 @@ public class FlashlightIntensity : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawRay(playerCamTransform.position, playerCamTransform.forward * rayDistance);
+    }
+
+    public void OnOff()
+    {
+        if (isActive == false)
+        {
+            flashlightSlider.value = maxIntensity / 2;
+            onImg.SetActive(true);
+            offImg.SetActive(false);
+        }
+        else if (isActive == true)
+        {
+            flashlightSlider.value = 0;
+            offImg.SetActive(true);
+            onImg.SetActive(false);
+        }
     }
 }
