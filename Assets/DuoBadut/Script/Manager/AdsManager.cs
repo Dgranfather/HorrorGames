@@ -148,16 +148,30 @@ public class AdsManager : MonoBehaviour
                 // TODO: Reward the user.
                 Debug.Log(String.Format(rewardMsg, reward.Type, reward.Amount));
             });
-            RegisterEventHandlers(rewardedAd);
+            RegisterEventHandlers(rewardedAd, MenuManager.buffNo);
         }
     }
 
-    private void RegisterEventHandlers(RewardedAd ad)
+    private void RegisterEventHandlers(RewardedAd ad, int buffID)
     {
         // Raised when the ad closed full screen content.
         ad.OnAdFullScreenContentClosed += () =>
         {
             Debug.Log("Rewarded ad full screen content closed.");
+
+            if (buffID == 1)
+            {
+                PlayerPrefs.SetInt("buff1", 1);
+            }
+            else if (buffID == 2)
+            {
+                PlayerPrefs.SetInt("buff2", 1);
+            }
+            else if (buffID == 3)
+            {
+                PlayerPrefs.SetInt("buff3", 1);
+            }
+
             rewardedAd.Destroy();
             LoadRewardedAd();
         };
