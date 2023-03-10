@@ -293,6 +293,63 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 53ec9051efa249c4daf578b032f204fb, type: 3}
   onPlay: 0
   theSettings: {fileID: 1868434240}
+--- !u!1 &1729825572
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1729825573}
+  - component: {fileID: 1729825575}
+  - component: {fileID: 1729825574}
+  m_Layer: 0
+  m_Name: AdsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1729825573
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729825572}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6311051073077477262}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1729825575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729825572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc0831a43bd5b2841a53ae7f965b3ac8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1729825574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729825572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47d6584b9c5d3d04d9f411c0d4891f7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6311051072796585859
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,6 +501,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5fda41756b021bd47b47ba00b7f16938, type: 3}
   - {fileID: 8300000, guid: 0469eb4ec4861394e9b17c35f99dfd12, type: 3}
   - {fileID: 8300000, guid: bd41a760d91b16b4e8e667ee19bc9ff7, type: 3}
+  - {fileID: 8300000, guid: b3ac4dace13bbc1449d54d14e51b609d, type: 3}
+  - {fileID: 8300000, guid: 20276a102f286f546ae62b0d0adc9dc5, type: 3}
+  - {fileID: 8300000, guid: 2f8b67b43709378489b5551a59caaff2, type: 3}
+  - {fileID: 8300000, guid: 5f72880aa2ae9a64c908e6762c9201a7, type: 3}
+  - {fileID: 8300000, guid: 5ed22c5f5d00da941afa6126e4b4e2bb, type: 3}
 --- !u!1 &6311051073077477249
 GameObject:
   m_ObjectHideFlags: 0
@@ -476,6 +538,7 @@ Transform:
   - {fileID: 6311051072796585856}
   - {fileID: 657139812}
   - {fileID: 510836722}
+  - {fileID: 1729825573}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -501,3 +564,10 @@ MonoBehaviour:
   currentMusicVolume: 1
   SFXSlider: {fileID: 0}
   musicSlider: {fileID: 0}
+  terrainGarden: {fileID: 0}
+  groundGarden: {fileID: 0}
+  globalVolume: {fileID: 0}
+  localVolume: {fileID: 0}
+  loadingLayer: {fileID: 0}
+  slider: {fileID: 0}
+  progressText: {fileID: 0}

@@ -21,7 +21,7 @@ public class Settings : MonoBehaviour
     private float volumeMaxValue = 1f;
     [SerializeField] private Slider SFXSlider, musicSlider;
 
-    [SerializeField] private GameObject terrainGarden, groundGarden;
+    [SerializeField] private GameObject terrainGarden, groundGarden, globalVolume, localVolume;
 
     //laoding scene
     public GameObject loadingLayer;
@@ -63,11 +63,16 @@ public class Settings : MonoBehaviour
         {
             terrainGarden.SetActive(true);
             groundGarden.SetActive(false);
+            globalVolume.SetActive(true);
+            localVolume.SetActive(true);
+
         }
         else
         {
             groundGarden.SetActive(true);
             terrainGarden.SetActive(false);
+            globalVolume.SetActive(false);
+            localVolume.SetActive(false);
         }
     }
 

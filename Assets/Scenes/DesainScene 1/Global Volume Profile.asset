@@ -34,18 +34,18 @@ MonoBehaviour:
   active: 0
   intensity:
     m_OverrideState: 1
-    m_Value: -1
+    m_Value: 0.6
   xMultiplier:
     m_OverrideState: 1
     m_Value: 1
   yMultiplier:
     m_OverrideState: 1
-    m_Value: 0.862
+    m_Value: 1
   center:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: {x: 0.5, y: 0.5}
   scale:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
 --- !u!114 &-7931868955480705450
 MonoBehaviour:
@@ -279,13 +279,13 @@ MonoBehaviour:
   active: 0
   postExposure:
     m_OverrideState: 0
-    m_Value: 1.26
+    m_Value: -0.61
   contrast:
     m_OverrideState: 1
-    m_Value: -8.7
+    m_Value: -35
   colorFilter:
-    m_OverrideState: 1
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    m_OverrideState: 0
+    m_Value: {r: 0.6037736, g: 0.5553578, b: 0.5553578, a: 1}
   hueShift:
     m_OverrideState: 0
     m_Value: -180
@@ -324,7 +324,6 @@ MonoBehaviour:
   - {fileID: 5832843700841784399}
   - {fileID: -4805769733897022987}
   - {fileID: 6532971568782714131}
-  - {fileID: 7517947017493877982}
   - {fileID: 4885374055074592921}
   - {fileID: 1058255755965186653}
   - {fileID: 5854645116434609689}
@@ -353,7 +352,7 @@ MonoBehaviour:
   active: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
 --- !u!114 &1215102563710897791
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -466,10 +465,10 @@ MonoBehaviour:
   active: 0
   type:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 9
   intensity:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   response:
     m_OverrideState: 1
     m_Value: 0
@@ -494,7 +493,7 @@ MonoBehaviour:
     m_Value: 0.7
   intensity:
     m_OverrideState: 1
-    m_Value: 0.8
+    m_Value: 0.5
   scatter:
     m_OverrideState: 0
     m_Value: 0.7
@@ -602,49 +601,3 @@ MonoBehaviour:
   clamp:
     m_OverrideState: 1
     m_Value: 0.0561
---- !u!114 &7517947017493877982
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c01700fd266d6914ababb731e09af2eb, type: 3}
-  m_Name: DepthOfField
-  m_EditorClassIdentifier: 
-  active: 0
-  mode:
-    m_OverrideState: 1
-    m_Value: 2
-  gaussianStart:
-    m_OverrideState: 1
-    m_Value: 14.9
-  gaussianEnd:
-    m_OverrideState: 0
-    m_Value: 58.31
-  gaussianMaxRadius:
-    m_OverrideState: 0
-    m_Value: 0.5
-  highQualitySampling:
-    m_OverrideState: 0
-    m_Value: 0
-  focusDistance:
-    m_OverrideState: 1
-    m_Value: 2
-  aperture:
-    m_OverrideState: 1
-    m_Value: 4.5
-  focalLength:
-    m_OverrideState: 1
-    m_Value: 66.06
-  bladeCount:
-    m_OverrideState: 1
-    m_Value: 9
-  bladeCurvature:
-    m_OverrideState: 1
-    m_Value: 0
-  bladeRotation:
-    m_OverrideState: 1
-    m_Value: -1.24
