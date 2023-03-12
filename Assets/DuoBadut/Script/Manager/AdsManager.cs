@@ -10,9 +10,9 @@ using GoogleMobileAds.Api;
 public class AdsManager : MonoBehaviour
 {
     string App_ID = "ca-app-pub-5603128442690074~8541787075";
-    string banner_Ad_ID = "ca-app-pub-3940256099942544/6300978111"; 
-    string interstitial_Ad_ID = "ca-app-pub-3940256099942544/1033173712";
-    string rewarded_Ad_ID = "ca-app-pub-3940256099942544/5224354917";
+    string banner_Ad_ID = "ca-app-pub-5603128442690074/4135454422"; 
+    string interstitial_Ad_ID = "ca-app-pub-5603128442690074/1521448111";
+    string rewarded_Ad_ID = "ca-app-pub-5603128442690074/8006965413";
 
     private BannerView bannerView;
     private InterstitialAd interstitial;
