@@ -253,7 +253,7 @@ PlayerSettings:
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: D:/Kerja/KeyStore Ritual/Keystore_Ritual.keystore
+  AndroidKeystoreName: E:/Project/MakingGame/Keystore/Ritual_Keystore/ritual.keystore
   AndroidKeyaliasName: duobadutdev
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0

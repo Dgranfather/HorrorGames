@@ -10,9 +10,14 @@ using GoogleMobileAds.Api;
 public class AdsManager : MonoBehaviour
 {
     string App_ID = "ca-app-pub-5603128442690074~8541787075";
-    string banner_Ad_ID = "ca-app-pub-5603128442690074/4135454422"; 
+    string banner_Ad_ID = "ca-app-pub-5603128442690074/4135454422";
     string interstitial_Ad_ID = "ca-app-pub-5603128442690074/1521448111";
     string rewarded_Ad_ID = "ca-app-pub-5603128442690074/8006965413";
+
+    //test ads ID untuk development dan pengetesan
+    //string banner_Ad_ID = "ca-app-pub-3940256099942544/6300978111";
+    //string interstitial_Ad_ID = "ca-app-pub-3940256099942544/1033173712";
+    //string rewarded_Ad_ID = "ca-app-pub-3940256099942544/5224354917";
 
     private BannerView bannerView;
     private InterstitialAd interstitial;
@@ -148,29 +153,16 @@ public class AdsManager : MonoBehaviour
                 // TODO: Reward the user.
                 Debug.Log(String.Format(rewardMsg, reward.Type, reward.Amount));
             });
-            RegisterEventHandlers(rewardedAd, MenuManager.buffNo);
+            RegisterEventHandlers(rewardedAd);
         }
     }
 
-    private void RegisterEventHandlers(RewardedAd ad, int buffID)
+    private void RegisterEventHandlers(RewardedAd ad)
     {
         // Raised when the ad closed full screen content.
         ad.OnAdFullScreenContentClosed += () =>
         {
             Debug.Log("Rewarded ad full screen content closed.");
-
-            if (buffID == 1)
-            {
-                PlayerPrefs.SetInt("buff1", 1);
-            }
-            else if (buffID == 2)
-            {
-                PlayerPrefs.SetInt("buff2", 1);
-            }
-            else if (buffID == 3)
-            {
-                PlayerPrefs.SetInt("buff3", 1);
-            }
 
             rewardedAd.Destroy();
             LoadRewardedAd();
@@ -180,6 +172,7 @@ public class AdsManager : MonoBehaviour
         {
             Debug.LogError("Rewarded ad failed to open full screen content " +
                            "with error : " + error);
+            rewardedAd.Destroy();
             LoadRewardedAd();
         };
     }

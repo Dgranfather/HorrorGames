@@ -41,17 +41,17 @@ public class MenuManager : MonoBehaviour
         if(buffID == 1)
         {
             buffNo = 1;
-            //PlayerPrefs.SetInt("buff1", 1);
+            PlayerPrefs.SetInt("buff1", 1);
         }
         else if(buffID == 2)
         {
             buffNo = 2;
-            //PlayerPrefs.SetInt("buff2", 1);
+            PlayerPrefs.SetInt("buff2", 1);
         }
         else if(buffID == 3)
         {
             buffNo = 3;
-            //PlayerPrefs.SetInt("buff3", 1);
+            PlayerPrefs.SetInt("buff3", 1);
         }
 
         isCd = true;
