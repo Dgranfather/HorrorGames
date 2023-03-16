@@ -19,10 +19,16 @@ namespace StarterAssets
 		[SerializeField] private AudioSource walkingSfx, exhaustedSfx;
 		private bool exhausted = false;
 		[SerializeField] private Settings theSettings;
+		public GameObject walk_Btn;
+		public GameObject run_Btn;
+		public bool run = false;
+
 
 		[Header("Player")]
 		[Tooltip("Move speed of the character in m/s")]
 		public float MoveSpeed = 4.0f;
+		[Tooltip("Normal speed of the character in m/s")]
+		public float NormalSpeed = 4.0f;
 		[Tooltip("Sprint speed of the character in m/s")]
 		public float SprintSpeed = 6.0f;
 		[Tooltip("Rotation speed of the character")]
@@ -60,6 +66,8 @@ namespace StarterAssets
 		[Tooltip("How far in degrees can you move the camera down")]
 		public float BottomClamp = -90.0f;
 
+	
+		
 		// cinemachine
 		private float _cinemachineTargetPitch;
 
@@ -195,35 +203,72 @@ namespace StarterAssets
 			}
 		}
 
+		public void Run()
+        {
+			
+			NormalSpeed = SprintSpeed;
+			walk_Btn.SetActive(true);
+			run_Btn.SetActive(false);
+			run = true;
+		}
+
+		public void Walk()
+        {
+			NormalSpeed = MoveSpeed;
+			walk_Btn.SetActive(false);
+			run_Btn.SetActive(true);
+			run = false;
+		}
+
 		private void Move()
 		{
 			// set target speed based on move speed, sprint speed and if sprint is pressed
-			float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
+			float targetSpeed = NormalSpeed = MoveSpeed;
+			if (run == true)
+            {
+				targetSpeed = SprintSpeed;
 
+				if (theStaminaPlayer.currentStamina <= 0)
+				{
+					SprintSpeed = MoveSpeed;
+					exhaustedNotif.SetActive(true);
+					exhausted = true;
+				}
+				else if (theStaminaPlayer.currentStamina >= 30)
+				{
+					SprintSpeed = varSprint;
+					exhaustedNotif.SetActive(false);
+					exhausted = false;
+				}
+
+			}
+			
+			
 			// a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
 			// note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
 			// if there is no input, set the target speed to 0
 			if (_input.move == Vector2.zero) targetSpeed = 0.0f;
-
+			
 			// a reference to the players current horizontal velocity
 			float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
 
 			float speedOffset = 0.1f;
 			float inputMagnitude = _input.analogMovement ? _input.move.magnitude : 1f;
 
-			// accelerate or decelerate to target speed
-			if (currentHorizontalSpeed < targetSpeed - speedOffset || currentHorizontalSpeed > targetSpeed + speedOffset)
-			{
-				// creates curved result rather than a linear one giving a more organic speed change
-				// note T in Lerp is clamped, so we don't need to clamp our speed
-				_speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude, Time.deltaTime * SpeedChangeRate);
+            // accelerate or decelerate to target speed
+            if (currentHorizontalSpeed < targetSpeed - speedOffset || currentHorizontalSpeed > targetSpeed + speedOffset)
+            {
+                // creates curved result rather than a linear one giving a more organic speed change
+                // note T in Lerp is clamped, so we don't need to clamp our speed
+                _speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude, Time.deltaTime * SpeedChangeRate);
 
-				// round speed to 3 decimal places
-				_speed = Mathf.Round(_speed * 1000f) / 1000f;
-			}
-			else
-			{
+                // round speed to 3 decimal places
+                _speed = Mathf.Round(_speed * 1000f) / 1000f;
+            }
+            else
+            {
+				
 				if (theStaminaPlayer.currentStamina <= 0)
 				{
                     SprintSpeed = MoveSpeed;
